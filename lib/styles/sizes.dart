@@ -55,3 +55,4 @@ const dimen23 = 23.0;
 const dimen24 = 24.0;
 const dimen25 = 25.0;
 const dimen26 = 26.0;
+const dimen32 = 32.0;

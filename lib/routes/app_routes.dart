@@ -1,6 +1,8 @@
 
 import 'package:endeavors/feature/auth/presentation/pages/login_page.dart';
+import 'package:endeavors/feature/dash_board/presentation/pages/dash_board_page.dart';
 import 'package:endeavors/feature/splash/pages/splash_page.dart';
+import 'package:endeavors/routes/animated_slidedirection.dart';
 import 'package:endeavors/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +13,10 @@ class AppPages {
         return MaterialPageRoute(builder: (_) => const SplashPage());
       case AppRoutes.login:
         return MaterialPageRoute(builder: (_) => const LoginPage());
-      // case AppRoutes.profile:
-      //   return MaterialPageRoute(builder: (_) => const ProfilePage());
+      case AppRoutes.dashBoard
+          :
+        return SlidePageRoute(page: const DashBoardPage(),direction: SlideDirection.bottomToTop);
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
@@ -21,4 +25,6 @@ class AppPages {
         );
     }
   }
+
+
 }

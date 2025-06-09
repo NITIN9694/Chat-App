@@ -44,6 +44,7 @@ dependencies:
   flutter_bloc: ^8.1.3
   flutter_gen: ^5.6.0
   flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.1.0
 
 
 dev_dependencies:
@@ -89,18 +90,21 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: RobotoLight
+    - family: InterLight
       fonts:
-        - asset: assets/fonts/roboto/Roboto-Light.ttf
-    - family: RobotoBold
+        - asset: assets/fonts/roboto/Inter-Light.ttf
+    - family: InterBold
       fonts:
-        - asset: assets/fonts/roboto/Roboto-Bold.ttf
-    - family: RobotoMedium
+        - asset: assets/fonts/roboto/Inter-Bold.ttf
+    - family: InterMedium
       fonts:
-        - asset: assets/fonts/roboto/Roboto-Medium.ttf
-    - family: RobotoRegular
+        - asset: assets/fonts/roboto/Inter-Medium.ttf
+    - family: InterRegular
       fonts:
-        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/roboto/Inter-Regular.ttf
+    - family: InterSemiBold
+      fonts:
+        - asset: assets/fonts/roboto/Inter-SemiBold.ttf
     - family: RobotoSemiBold
       fonts:
         - asset: assets/fonts/roboto/Roboto-SemiBold.ttf

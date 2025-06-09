@@ -1,3 +1,5 @@
+import 'package:endeavors/feature/auth/presentation/bloc/login_bloc.dart';
+import 'package:endeavors/feature/dash_board/presentation/bloc/dash_board_bloc.dart';
 import 'package:endeavors/feature/splash/bloc/splash_bloc.dart';
 import 'package:endeavors/initializer.dart';
 import 'package:endeavors/routes/app_pages.dart';
@@ -23,7 +25,11 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MultiBlocProvider(
-            providers: [BlocProvider<SplashBloc>(create: (_) => SplashBloc())],
+            providers: [BlocProvider<SplashBloc>(create: (_) => SplashBloc()),
+              BlocProvider<LoginBloc>(create: (_) => LoginBloc()),
+              BlocProvider<DashBoardBloc>(create: (_) => DashBoardBloc())
+
+            ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',

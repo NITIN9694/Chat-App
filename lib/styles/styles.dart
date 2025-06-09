@@ -5,23 +5,23 @@ import 'package:endeavors/styles/sizes.dart';
 import 'package:flutter/material.dart';
 
 lightTextStyle({required fontSize,required color,height}) {
-  return TextStyle(fontSize: fontSize, color: color, fontFamily: "RobotoLight");
+  return TextStyle(fontSize: fontSize, color: color, fontFamily: "InterLight");
 }
 
 regularTextStyle({required fontSize,required color,height}) {
-  return TextStyle(fontSize: fontSize, color: color,fontWeight: FontWeight.w500,height: height, fontFamily: "RobotoRegular");
+  return TextStyle(fontSize: fontSize, color: color,fontWeight: FontWeight.w500,height: height, fontFamily: "InterRegular");
 }
 
 mediumTextStyle({required fontSize,required color,height}) {
-  return TextStyle(fontSize: fontSize, color: color, fontFamily: "RobotoMedium");
+  return TextStyle(fontSize: fontSize, color: color, fontFamily: "InterMedium");
 }
 
 semiBoldTextStyle({required fontSize,required color,height}) {
-  return TextStyle(fontSize: fontSize, color: color,fontWeight: FontWeight.w700, fontFamily: "RobotoSemiBold");
+  return TextStyle(fontSize: fontSize, color: color,fontWeight: FontWeight.w700, fontFamily: "InterSemiBold");
 }
 
 boldTextStyle({required fontSize,required color,height}) {
-  return TextStyle(fontSize: fontSize, color: color,fontWeight: FontWeight.w700, fontFamily: "RobotoBold");
+  return TextStyle(fontSize: fontSize, color: color,fontWeight: FontWeight.w800,fontFamily: "InterBold");
 }
 
 appBarTextStyle({fontSize,required color}) {

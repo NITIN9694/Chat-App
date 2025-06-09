@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
   @override
   void initState() {
    _controller = AnimationController(vsync: this,
-  duration: const Duration(seconds: 2)
+  duration: const Duration(seconds: 1)
    );
 
    _animation = Tween<double>(begin: 0.2,end: 1.0).animate(
@@ -48,7 +48,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
       if (state is SplashNavigationToLogin) {
         Navigator.pushReplacementNamed(context, AppRoutes.login);
       } else if (state is SplashNavigateToHome) {
-        Navigator.pushReplacementNamed(context, AppRoutes.home);
+        Navigator.pushReplacementNamed(context, AppRoutes.dashBoard);
       }
     },
       child: Scaffold(

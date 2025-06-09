@@ -10,14 +10,20 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: RobotoLight
-  static const String robotoLight = 'RobotoLight';
+  /// Font family: InterBold
+  static const String interBold = 'InterBold';
 
-  /// Font family: RobotoMedium
-  static const String robotoMedium = 'RobotoMedium';
+  /// Font family: InterLight
+  static const String interLight = 'InterLight';
 
-  /// Font family: RobotoRegular
-  static const String robotoRegular = 'RobotoRegular';
+  /// Font family: InterMedium
+  static const String interMedium = 'InterMedium';
+
+  /// Font family: InterRegular
+  static const String interRegular = 'InterRegular';
+
+  /// Font family: InterSemiBold
+  static const String interSemiBold = 'InterSemiBold';
 
   /// Font family: RobotoSemiBold
   static const String robotoSemiBold = 'RobotoSemiBold';

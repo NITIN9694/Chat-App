@@ -10,6 +10,12 @@ class AppColors {
   static Color colF324A7 = Color(0xffF324A7);
   static Color col268E2D = Color(0xff268E2D);
   static Color col00B383 = Color(0xff00B383);
+  static Color colEdF1 = Color(0xffEDF1F3);
+  static Color col6C7 = Color(0xff6C7278);
+  static Color col4D8 = Color(0xff4D81E7);
+  static Color colD6E7 = Color(0xff1D61E7);
+  static Color colE2F1FA = Color(0xFFE2F1FA);
+  static Color col333 = Color(0xff333333);
   static Color colBlack = Colors.black;
   static Color colWhite = Colors.white;
 }

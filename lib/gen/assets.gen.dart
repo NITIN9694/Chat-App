@@ -12,20 +12,66 @@ import 'package:flutter/widgets.dart';
 class $AssetsImageGen {
   const $AssetsImageGen();
 
+  /// File path: assets/image/Female.png
+  AssetGenImage get female => const AssetGenImage('assets/image/Female.png');
+
   /// File path: assets/image/app_logo.png
   AssetGenImage get appLogo => const AssetGenImage('assets/image/app_logo.png');
 
   /// File path: assets/image/login_bg.png
   AssetGenImage get loginBg => const AssetGenImage('assets/image/login_bg.png');
 
+  /// File path: assets/image/male_1.png
+  AssetGenImage get male1 => const AssetGenImage('assets/image/male_1.png');
+
+  /// File path: assets/image/male_2.png
+  AssetGenImage get male2 => const AssetGenImage('assets/image/male_2.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [appLogo, loginBg];
+  List<AssetGenImage> get values => [female, appLogo, loginBg, male1, male2];
+}
+
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
+
+  /// File path: assets/svg/call.svg
+  String get call => 'assets/svg/call.svg';
+
+  /// File path: assets/svg/grid_view.svg
+  String get gridView => 'assets/svg/grid_view.svg';
+
+  /// File path: assets/svg/log_eyes_on.svg
+  String get logEyesOn => 'assets/svg/log_eyes_on.svg';
+
+  /// File path: assets/svg/login_eyes_off.svg
+  String get loginEyesOff => 'assets/svg/login_eyes_off.svg';
+
+  /// File path: assets/svg/search.svg
+  String get search => 'assets/svg/search.svg';
+
+  /// File path: assets/svg/terminal.svg
+  String get terminal => 'assets/svg/terminal.svg';
+
+  /// File path: assets/svg/view_agenda.svg
+  String get viewAgenda => 'assets/svg/view_agenda.svg';
+
+  /// List of all assets
+  List<String> get values => [
+    call,
+    gridView,
+    logEyesOn,
+    loginEyesOff,
+    search,
+    terminal,
+    viewAgenda,
+  ];
 }
 
 class Assets {
   const Assets._();
 
   static const $AssetsImageGen image = $AssetsImageGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
 class AssetGenImage {

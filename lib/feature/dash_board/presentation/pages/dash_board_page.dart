@@ -1,8 +1,11 @@
 import 'package:endeavors/feature/dash_board/presentation/bloc/dash_board_bloc.dart';
+import 'package:endeavors/feature/dash_board/presentation/widget/dash_board_grid_view.dart';
+import 'package:endeavors/feature/dash_board/presentation/widget/dash_board_list_view.dart';
 import 'package:endeavors/feature/dash_board/presentation/widget/search_text_filed.dart';
 import 'package:endeavors/gen/assets.gen.dart';
 import 'package:endeavors/infrastructure/utils/app_menu_bar.dart';
 import 'package:endeavors/styles/colors.dart';
+import 'package:endeavors/styles/sizes.dart';
 import 'package:endeavors/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,16 +24,17 @@ class _DashBoardPageState extends State<DashBoardPage> {
 
   @override
   void initState() {
-   context.read<DashBoardBloc>().add(LoadDashBoardData());
+    context.read<DashBoardBloc>().add(LoadDashBoardData());
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.colWhite,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          padding: EdgeInsets.only(left: 20.w,right: 20.w, top: 20.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,138 +43,87 @@ class _DashBoardPageState extends State<DashBoardPage> {
               SizedBox(
                 height: 35.h,
               ),
-
               Expanded(
                 child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      //top bar search
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text("Assigned Client",
-                            style: mediumTextStyle(
-                                fontSize: 16.sp, color: AppColors.col333),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(Assets.svg.gridView,
-                                height: 20.h,
-                                width: 20.w,
-                              ),
-                              SizedBox(width: 15.w,),
-                              SvgPicture.asset(Assets.svg.viewAgenda,
-                                height: 13.h,
-                                width: 12.w,
-                              ),
 
-                            ],
-                          )
-                        ],
-                      ),
-
-                      //search filed
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15.h
-                        ),
-                        child: SearchTextFiled(
-                          hintText: "Search here", controller: searchBarTextFiled,),
-                      ),
                       //DashBoard Data
                       BlocBuilder<DashBoardBloc, DashBoardState>(
                           builder: (context, state) {
-                            if (state is DashBoardLoading) {
-                              return CircularProgressIndicator();
-                            } else if (state is DashBoardLoaded) {
+                        if (state is DashBoardLoading) {
+                          return CircularProgressIndicator();
+                        } else if (state is DashBoardLoaded) {
+                          bool isGridView = true;
 
+                            isGridView = state.isGridView;
 
-                              return SizedBox(
-                                child: GridView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  padding: const EdgeInsets.all(12),
-                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    mainAxisSpacing: 4,
-                                    crossAxisSpacing: 4,
-                                  ),
-                                  itemCount: state.dashBoardPersonModel.length,
-                                  itemBuilder: (context, index) {
-                                    final person = state.dashBoardPersonModel[index];
-                                    return Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      elevation: 2,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                CircleAvatar(
-                                                  radius: 16,
-                                                  backgroundImage: AssetImage(person.avatarUrl),
-                                                ),
-                                                const SizedBox(width: 8),
-                                                Text(
-                                                  person.name,
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.black54,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(height: 12),
-                                            const Text("VRS Case ID:"),
-                                            Text(
-                                              person.caseId,
-                                              style: const TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.blue,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 8),
-                                            const Text("Job Status:"),
-                                            Text(
-                                              person.jobStatus,
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.bold,
-                                                color: person.jobStatus == "Employed"
-                                                    ? Colors.green
-                                                    : Colors.teal,
-                                              ),
-                                            ),
-                                            const Spacer(),
-                                            const Align(
-                                              alignment: Alignment.bottomRight,
-                                              child: Icon(Icons.phone_outlined, size: 20),
-                                            )
-                                          ],
+                          return Column(
+                              children: [
+                                //top bar search
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Assigned Client",
+                                      style: mediumTextStyle(
+                                          fontSize: 16.sp, color: AppColors.col333),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        GestureDetector(
+                                          onTap:(){
+                                            context.read<DashBoardBloc>().add(ToggleViewType(isGridView: true));
+                                          },
+                                          child: SvgPicture.asset(
+                                            isGridView?   Assets.svg.gridView:Assets.svg.unselectedGridView,
+                                            height: 20.h,
+                                            width: 20.w,
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
+                                        SizedBox(
+                                          width: 15.w,
+                                        ),
+                                        GestureDetector(
+                                          onTap:(){
+                                            context.read<DashBoardBloc>().add(ToggleViewType(isGridView: false));
 
-                            }else if(state is DashboardError){
-                              return Container(
-                                color: Colors.orange,
-                              );
-                            }
-                            return SizedBox();
-                          })
+                                          },
+                                          child: SvgPicture.asset(
+                                          isGridView?  Assets.svg.viewAgenda:Assets.svg.selectedViewAgenda,
+                                            height: 13.h,
+                                            width: 12.w,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+
+                                //search filed
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 15.h),
+                                  child: SearchTextFiled(
+                                    hintText: "Search here",
+                                    controller: searchBarTextFiled,
+                                  ),
+                                ),
+
+                                isGridView?  DashBoardGridView(dashBoardPersonModel: state.dashBoardPersonModel,):DashBoardListView(dashBoardPersonModel: state.dashBoardPersonModel,),
+                              ]);
+                        } else if (state is DashboardError) {
+                          return Container(
+                            color: Colors.orange,
+                          );
+                        }
+                        return SizedBox();
+                      })
                     ],
                   ),
                 ),
@@ -178,7 +131,6 @@ class _DashBoardPageState extends State<DashBoardPage> {
             ],
           ),
         ),
-
       ),
     );
   }

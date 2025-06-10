@@ -1,5 +1,6 @@
 import 'package:endeavors/feature/auth/presentation/bloc/login_bloc.dart';
 import 'package:endeavors/feature/dash_board/presentation/bloc/dash_board_bloc.dart';
+import 'package:endeavors/feature/main_page/bloc/nav_cubit.dart';
 import 'package:endeavors/feature/splash/bloc/splash_bloc.dart';
 import 'package:endeavors/initializer.dart';
 import 'package:endeavors/routes/app_pages.dart';
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
             providers: [BlocProvider<SplashBloc>(create: (_) => SplashBloc()),
               BlocProvider<LoginBloc>(create: (_) => LoginBloc()),
+              BlocProvider<NavCubit>(create: (_) => NavCubit()),
+
               BlocProvider<DashBoardBloc>(create: (_) => DashBoardBloc())
 
             ],

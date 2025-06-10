@@ -32,10 +32,10 @@ class _SearchTextFiledState extends State<SearchTextFiled> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 9.h),
+      padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 8.h),
       decoration: BoxDecoration(
         color: AppColors.colE2F1FA, // Light blue background
-        borderRadius: BorderRadius.circular(40), // Fully rounded edges
+        borderRadius: BorderRadius.circular(40.sp), // Fully rounded edges
       ),
       child: Row(
         children: [
@@ -56,7 +56,7 @@ class _SearchTextFiledState extends State<SearchTextFiled> {
               ),
             ),
           ),
-          SvgPicture.asset(Assets.svg.search,height: 20.h,width: 20.w,)
+          SvgPicture.asset(Assets.svg.search,height: 17.h,width: 17.w,)
         ],
       ),
     )

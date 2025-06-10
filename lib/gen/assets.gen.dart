@@ -49,8 +49,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/search.svg
   String get search => 'assets/svg/search.svg';
 
+  /// File path: assets/svg/selected_view_agenda.svg
+  String get selectedViewAgenda => 'assets/svg/selected_view_agenda.svg';
+
   /// File path: assets/svg/terminal.svg
   String get terminal => 'assets/svg/terminal.svg';
+
+  /// File path: assets/svg/unselected_grid_view.svg
+  String get unselectedGridView => 'assets/svg/unselected_grid_view.svg';
 
   /// File path: assets/svg/view_agenda.svg
   String get viewAgenda => 'assets/svg/view_agenda.svg';
@@ -62,7 +68,9 @@ class $AssetsSvgGen {
     logEyesOn,
     loginEyesOff,
     search,
+    selectedViewAgenda,
     terminal,
+    unselectedGridView,
     viewAgenda,
   ];
 }

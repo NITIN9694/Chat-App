@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static Color colPrimary = Color(0xff9AC6EA);
+  // static Color colBg = Color(0x0fff57fa);
+  static Color colBg = Color(0x08FF57FA);
+
   static Color col007FC4 = Color(0xff007FC4);
   static Color col004576 = Color(0xff004576);
   static Color col6666 = Color(0xff666666);
@@ -21,5 +24,7 @@ class AppColors {
   static Color colBlack = Colors.black;
   static Color colWhite = Colors.white;
   static Color col8888 = Color(0xff338888);
-
+  static Color colE3F = Color(0xffE3F4FF);
+  static Color col4100 = Color(0xff4100C4);
+  static Color colF7F7 = Color(0xffF7F7F7);
 }

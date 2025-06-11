@@ -10,10 +10,7 @@ class AppMenuBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      decoration: BoxDecoration(
-        color: AppColors.colWhite,
 
-      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

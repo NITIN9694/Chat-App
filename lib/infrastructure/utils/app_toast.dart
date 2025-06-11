@@ -23,6 +23,7 @@ void showCustomToast(BuildContext context, String message, ToastType type) {
 
   Flushbar(
     message: message,
+
     icon: Icon(icon, size: 28.0, color: Colors.white),
     duration: Duration(seconds: 3),
     leftBarIndicatorColor: bgColor,

@@ -34,8 +34,32 @@ class $AssetsImageGen {
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/bottom_chat.svg
+  String get bottomChat => 'assets/svg/bottom_chat.svg';
+
+  /// File path: assets/svg/bottom_home.svg
+  String get bottomHome => 'assets/svg/bottom_home.svg';
+
+  /// File path: assets/svg/bottom_job.svg
+  String get bottomJob => 'assets/svg/bottom_job.svg';
+
+  /// File path: assets/svg/bottom_selected_home.svg
+  String get bottomSelectedHome => 'assets/svg/bottom_selected_home.svg';
+
+  /// File path: assets/svg/botton_calendar.svg
+  String get bottonCalendar => 'assets/svg/botton_calendar.svg';
+
   /// File path: assets/svg/call.svg
   String get call => 'assets/svg/call.svg';
+
+  /// File path: assets/svg/captive_portal.svg
+  String get captivePortal => 'assets/svg/captive_portal.svg';
+
+  /// File path: assets/svg/checked_bag.svg
+  String get checkedBag => 'assets/svg/checked_bag.svg';
+
+  /// File path: assets/svg/explore.svg
+  String get explore => 'assets/svg/explore.svg';
 
   /// File path: assets/svg/grid_view.svg
   String get gridView => 'assets/svg/grid_view.svg';
@@ -61,9 +85,20 @@ class $AssetsSvgGen {
   /// File path: assets/svg/view_agenda.svg
   String get viewAgenda => 'assets/svg/view_agenda.svg';
 
+  /// File path: assets/svg/work_history.svg
+  String get workHistory => 'assets/svg/work_history.svg';
+
   /// List of all assets
   List<String> get values => [
+    bottomChat,
+    bottomHome,
+    bottomJob,
+    bottomSelectedHome,
+    bottonCalendar,
     call,
+    captivePortal,
+    checkedBag,
+    explore,
     gridView,
     logEyesOn,
     loginEyesOff,
@@ -72,6 +107,7 @@ class $AssetsSvgGen {
     terminal,
     unselectedGridView,
     viewAgenda,
+    workHistory,
   ];
 }
 

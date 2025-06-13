@@ -1,5 +1,3 @@
-
-
 import 'package:endeavors/infrastructure/utils/app_menu_bar.dart';
 import 'package:endeavors/screens/dash_board/client/presentation/widget/search_text_filed.dart';
 import 'package:endeavors/screens/dash_board/jobs/presentation/widgets/job_list_widget.dart';
@@ -16,15 +14,16 @@ class JobPage extends StatefulWidget {
 }
 
 class _JobPageState extends State<JobPage> {
-   TextEditingController jobSearchTextEditingController = TextEditingController();
+  TextEditingController jobSearchTextEditingController =
+      TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.colBg,
-      body:    SafeArea(
-
+      body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.all(20.h),
+          padding: EdgeInsets.all(20.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,8 +51,7 @@ class _JobPageState extends State<JobPage> {
                           controller: jobSearchTextEditingController,
                         ),
                       ),
-
-                      JobListWidget(),
+                      ClientListWidget(),
                     ],
                   ),
                 ),
@@ -62,7 +60,6 @@ class _JobPageState extends State<JobPage> {
           ),
         ),
       ),
-
     );
   }
 }

@@ -1,5 +1,5 @@
-
 import 'package:endeavors/gen/assets.gen.dart';
+import 'package:endeavors/infrastructure/routes/app_pages.dart';
 import 'package:endeavors/infrastructure/utils/app_menu_bar.dart';
 import 'package:endeavors/screens/dash_board/client/bloc/client_bloc.dart';
 import 'package:endeavors/screens/dash_board/client/presentation/widget/client_grid_view.dart';
@@ -34,7 +34,7 @@ class _ClientPageState extends State<ClientPage> {
     return Scaffold(
       backgroundColor: AppColors.colBg.withOpacity(0.03),
       body: Padding(
-        padding: EdgeInsets.only(left: 20.w,right: 20.w, top: 20.h),
+        padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +50,6 @@ class _ClientPageState extends State<ClientPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     //DashBoard Data
                     BlocBuilder<ClientBloc, ClientState>(
                         builder: (context, state) {
@@ -59,64 +58,86 @@ class _ClientPageState extends State<ClientPage> {
                       } else if (state is ClientLoaded) {
                         bool isGridView = true;
 
-                          isGridView = state.isGridView;
+                        isGridView = state.isGridView;
 
-                        return Column(
+                        return Column(children: [
+                          //top bar search
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              //top bar search
+                              Text(
+                                "Assigned Client",
+                                style: mediumTextStyle(
+                                    fontSize: 16.sp, color: AppColors.col333),
+                              ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    "Assigned Client",
-                                    style: mediumTextStyle(
-                                        fontSize: 16.sp, color: AppColors.col333),
+                                  GestureDetector(
+                                    onTap: () {
+                                      context.read<ClientBloc>().add(
+                                          ToggleViewType(isGridView: true));
+                                    },
+                                    child: SvgPicture.asset(
+                                      isGridView
+                                          ? Assets.svg.gridView
+                                          : Assets.svg.unselectedGridView,
+                                      height: 20.h,
+                                      width: 20.w,
+                                    ),
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      GestureDetector(
-                                        onTap:(){
-                                          context.read<ClientBloc>().add(ToggleViewType(isGridView: true));
-                                        },
-                                        child: SvgPicture.asset(
-                                          isGridView?   Assets.svg.gridView:Assets.svg.unselectedGridView,
-                                          height: 20.h,
-                                          width: 20.w,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 15.w,
-                                      ),
-                                      GestureDetector(
-                                        onTap:(){
-                                          context.read<ClientBloc>().add(ToggleViewType(isGridView: false));
-
-                                        },
-                                        child: SvgPicture.asset(
-                                        isGridView?  Assets.svg.viewAgenda:Assets.svg.selectedViewAgenda,
-                                          height: 13.h,
-                                          width: 12.w,
-                                        ),
-                                      ),
-                                    ],
-                                  )
+                                  SizedBox(
+                                    width: 15.w,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      context.read<ClientBloc>().add(
+                                          ToggleViewType(isGridView: false));
+                                    },
+                                    child: SvgPicture.asset(
+                                      isGridView
+                                          ? Assets.svg.viewAgenda
+                                          : Assets.svg.selectedViewAgenda,
+                                      height: 13.h,
+                                      width: 12.w,
+                                    ),
+                                  ),
                                 ],
-                              ),
+                              )
+                            ],
+                          ),
 
-                              //search filed
-                              Padding(
-                                padding: EdgeInsets.symmetric(vertical: 15.h),
-                                child: SearchTextFiled(
-                                  hintText: "Search here",
-                                  controller: searchBarTextFiled,
-                                ),
-                              ),
+                          //search filed
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 15.h),
+                            child: SearchTextFiled(
+                              hintText: "Search here",
+                              controller: searchBarTextFiled,
+                            ),
+                          ),
 
-                              isGridView?  ClientGridView(dashBoardPersonModel: state.dashBoardPersonModel,):ClientListView(dashBoardPersonModel: state.dashBoardPersonModel,),
-                            ]);
+                          isGridView
+                              ? GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, AppRoutes.clientPageDetail);
+                                  },
+                                  child: ClientGridView(
+                                    dashBoardPersonModel:
+                                        state.dashBoardPersonModel,
+                                  ))
+                              : GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, AppRoutes.clientPageDetail);
+                                  },
+                                  child: ClientListView(
+                                    dashBoardPersonModel:
+                                        state.dashBoardPersonModel,
+                                  )),
+                        ]);
                       }
                       return SizedBox();
                     })

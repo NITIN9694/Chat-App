@@ -1,8 +1,8 @@
-
-
-
+import 'package:endeavors/styles/colors.dart';
+import 'package:endeavors/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class StatusFilterChips extends StatefulWidget {
   const StatusFilterChips({Key? key}) : super(key: key);
@@ -41,38 +41,51 @@ class _StatusFilterChipsState extends State<StatusFilterChips> {
               });
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.blue.shade100 : Colors.transparent,
-                borderRadius: BorderRadius.circular(20.r),
+                color: isSelected ? AppColors.colE2F1FA : Colors.transparent,
+                borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: isSelected ? Colors.blue : Colors.grey.shade300,
-                  width: 1,
+                  color: isSelected
+                      ? AppColors.colE2F1FA
+                      : Color(0xFF457626).withOpacity(0.2),
+                  width: 2,
                 ),
               ),
               child: Row(
                 children: [
                   Text(
                     item['label'],
-                    style: TextStyle(
-                      color: Colors.blue.shade800,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14.sp,
+                    style: regularTextStyle(
+                      color: isSelected
+                          ? AppColors.col007FC4
+                          : AppColors.col004576,
+                      fontSize: 11.sp,
                     ),
                   ),
                   SizedBox(width: 6.w),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
                     decoration: BoxDecoration(
-                      color: isSelected ? Colors.blue : Colors.transparent,
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Text(
-                      item['count'].toString(),
-                      style: TextStyle(
-                        fontSize: 11.sp,
-                        color: isSelected ? Colors.white : Colors.blue.shade800,
-                        fontWeight: FontWeight.bold,
+                        color: isSelected
+                            ? AppColors.col007FC4
+                            : Colors.transparent,
+                        border: Border.all(
+                          color: isSelected
+                              ? AppColors.col007FC4
+                              : AppColors.col007FC4,
+                        ),
+                        shape: BoxShape.circle),
+                    child: Center(
+                      child: Text(
+                        item['count'].toString(),
+                        style: TextStyle(
+                          fontSize: 11.sp,
+                          color:
+                              isSelected ? Colors.white : AppColors.col004576,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

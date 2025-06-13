@@ -1,4 +1,5 @@
 import 'package:endeavors/gen/assets.gen.dart';
+import 'package:endeavors/infrastructure/routes/app_pages.dart';
 import 'package:endeavors/infrastructure/utils/app_common_widgets.dart';
 import 'package:endeavors/styles/colors.dart';
 import 'package:endeavors/styles/sizes.dart';
@@ -8,14 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class JobListWidget extends StatefulWidget {
-  const JobListWidget({super.key});
+class ClientListWidget extends StatefulWidget {
+  const ClientListWidget({super.key});
 
   @override
-  State<JobListWidget> createState() => _JobListWidgetState();
+  State<ClientListWidget> createState() => _ClientListWidgetState();
 }
 
-class _JobListWidgetState extends State<JobListWidget> {
+class _ClientListWidgetState extends State<ClientListWidget> {
   bool _isExpanded = false;
 
   @override
@@ -109,76 +110,93 @@ class _JobListWidgetState extends State<JobListWidget> {
                       )
                     ],
                   ),
-                  AnimatedContainer(
-                    duration: Duration(milliseconds: 700),
-                    curve: Curves.easeInOut,
-                    height: _isExpanded ? 100.h : 0, // Animate height
-                    child: _isExpanded
-                        ? Padding(
-                            padding: EdgeInsets.only(top: 10.h),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "client info".toUpperCase(),
-                                  style: boldTextStyle(
-                                      fontSize: dimen10,
-                                      color: AppColors.col6666),
-                                ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.colF7F7,
-                                    borderRadius: BorderRadius.circular(10.sp),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.jobDetailPage);
+                    },
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 700),
+                      curve: Curves.easeInOut,
+                      height: _isExpanded ? 100.h : 0, // Animate height
+                      child: _isExpanded
+                          ? Padding(
+                              padding: EdgeInsets.only(top: 10.h),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "client info".toUpperCase(),
+                                    style: boldTextStyle(
+                                        fontSize: dimen10,
+                                        color: AppColors.col6666),
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        "assets/image/male_2.png",
-                                        fit: BoxFit.contain,
-                                        height: 60.h,
-                                        width: 60.w,
-                                      ),
-
-                                      Padding(
-                                        padding:  EdgeInsets.only(right:10.w),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            Text("John Wills",
-                                            style: regularTextStyle(fontSize: dimen15.sp, color: AppColors.col6666),
-                                            ),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-                                                SvgPicture.asset(Assets.svg.call),
-                                                SizedBox(
-                                                  width: 5.w,
-                                                ),
-                                                Text("+1 (505) 654 - 8752",
-                                                style: lightTextStyle(fontSize: dimen12.sp, color: AppColors.col6666),
-                                                )
-                                              ],
-                                            )
-                                          ],
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.colF7F7,
+                                      borderRadius:
+                                          BorderRadius.circular(10.sp),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset(
+                                          "assets/image/male_2.png",
+                                          fit: BoxFit.contain,
+                                          height: 60.h,
+                                          width: 60.w,
                                         ),
-                                      )
-                                    ],
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 10.w),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                "John Wills",
+                                                style: regularTextStyle(
+                                                    fontSize: dimen15.sp,
+                                                    color: AppColors.col6666),
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  SvgPicture.asset(
+                                                      Assets.svg.call),
+                                                  SizedBox(
+                                                    width: 5.w,
+                                                  ),
+                                                  Text(
+                                                    "+1 (505) 654 - 8752",
+                                                    style: lightTextStyle(
+                                                        fontSize: dimen12.sp,
+                                                        color:
+                                                            AppColors.col6666),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          )
-                        : null,
+                                ],
+                              ),
+                            )
+                          : null,
+                    ),
                   ),
                 ],
               ),

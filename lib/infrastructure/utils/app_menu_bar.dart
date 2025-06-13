@@ -9,18 +9,15 @@ class AppMenuBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SvgPicture.asset(Assets.svg.terminal,height: 22.h,width: 22.w,),
-          Spacer(),
-          Assets.image.appLogo.image(fit: BoxFit.contain,width: 90.w,height: 18.h),
-          Spacer(),
-        ],
-      ),
+    return  Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SvgPicture.asset(Assets.svg.terminal,height: 22.h,width: 22.w,),
+        Spacer(),
+        Assets.image.appLogo.image(fit: BoxFit.contain,width: 90.w,height: 18.h),
+        Spacer(),
+      ],
     );
   }
 }

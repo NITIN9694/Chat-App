@@ -18,6 +18,10 @@ class $AssetsImageGen {
   /// File path: assets/image/app_logo.png
   AssetGenImage get appLogo => const AssetGenImage('assets/image/app_logo.png');
 
+  /// File path: assets/image/autoplay.png
+  AssetGenImage get autoplay =>
+      const AssetGenImage('assets/image/autoplay.png');
+
   /// File path: assets/image/login_bg.png
   AssetGenImage get loginBg => const AssetGenImage('assets/image/login_bg.png');
 
@@ -28,11 +32,27 @@ class $AssetsImageGen {
   AssetGenImage get male2 => const AssetGenImage('assets/image/male_2.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [female, appLogo, loginBg, male1, male2];
+  List<AssetGenImage> get values => [
+    female,
+    appLogo,
+    autoplay,
+    loginBg,
+    male1,
+    male2,
+  ];
 }
 
 class $AssetsSvgGen {
   const $AssetsSvgGen();
+
+  /// File path: assets/svg/alarm.svg
+  String get alarm => 'assets/svg/alarm.svg';
+
+  /// File path: assets/svg/alarm_smart_wake.svg
+  String get alarmSmartWake => 'assets/svg/alarm_smart_wake.svg';
+
+  /// File path: assets/svg/apartment.svg
+  String get apartment => 'assets/svg/apartment.svg';
 
   /// File path: assets/svg/bottom_chat.svg
   String get bottomChat => 'assets/svg/bottom_chat.svg';
@@ -49,8 +69,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/botton_calendar.svg
   String get bottonCalendar => 'assets/svg/botton_calendar.svg';
 
+  /// File path: assets/svg/cal_icon_job.svg
+  String get calIconJob => 'assets/svg/cal_icon_job.svg';
+
+  /// File path: assets/svg/calendar_month.svg
+  String get calendarMonth => 'assets/svg/calendar_month.svg';
+
   /// File path: assets/svg/call.svg
   String get call => 'assets/svg/call.svg';
+
+  /// File path: assets/svg/call_icon_job.svg
+  String get callIconJob => 'assets/svg/call_icon_job.svg';
 
   /// File path: assets/svg/captive_portal.svg
   String get captivePortal => 'assets/svg/captive_portal.svg';
@@ -58,17 +87,38 @@ class $AssetsSvgGen {
   /// File path: assets/svg/checked_bag.svg
   String get checkedBag => 'assets/svg/checked_bag.svg';
 
+  /// File path: assets/svg/contacts.svg
+  String get contacts => 'assets/svg/contacts.svg';
+
+  /// File path: assets/svg/corporate_fare.svg
+  String get corporateFare => 'assets/svg/corporate_fare.svg';
+
+  /// File path: assets/svg/doc_chat_job.svg
+  String get docChatJob => 'assets/svg/doc_chat_job.svg';
+
+  /// File path: assets/svg/doc_icon_job.svg
+  String get docIconJob => 'assets/svg/doc_icon_job.svg';
+
   /// File path: assets/svg/explore.svg
   String get explore => 'assets/svg/explore.svg';
 
   /// File path: assets/svg/grid_view.svg
   String get gridView => 'assets/svg/grid_view.svg';
 
+  /// File path: assets/svg/location_on.svg
+  String get locationOn => 'assets/svg/location_on.svg';
+
   /// File path: assets/svg/log_eyes_on.svg
   String get logEyesOn => 'assets/svg/log_eyes_on.svg';
 
   /// File path: assets/svg/login_eyes_off.svg
   String get loginEyesOff => 'assets/svg/login_eyes_off.svg';
+
+  /// File path: assets/svg/msg_icon_job.svg
+  String get msgIconJob => 'assets/svg/msg_icon_job.svg';
+
+  /// File path: assets/svg/notification_add.svg
+  String get notificationAdd => 'assets/svg/notification_add.svg';
 
   /// File path: assets/svg/search.svg
   String get search => 'assets/svg/search.svg';
@@ -85,28 +135,45 @@ class $AssetsSvgGen {
   /// File path: assets/svg/view_agenda.svg
   String get viewAgenda => 'assets/svg/view_agenda.svg';
 
+  /// File path: assets/svg/volunteer_activism.svg
+  String get volunteerActivism => 'assets/svg/volunteer_activism.svg';
+
   /// File path: assets/svg/work_history.svg
   String get workHistory => 'assets/svg/work_history.svg';
 
   /// List of all assets
   List<String> get values => [
+    alarm,
+    alarmSmartWake,
+    apartment,
     bottomChat,
     bottomHome,
     bottomJob,
     bottomSelectedHome,
     bottonCalendar,
+    calIconJob,
+    calendarMonth,
     call,
+    callIconJob,
     captivePortal,
     checkedBag,
+    contacts,
+    corporateFare,
+    docChatJob,
+    docIconJob,
     explore,
     gridView,
+    locationOn,
     logEyesOn,
     loginEyesOff,
+    msgIconJob,
+    notificationAdd,
     search,
     selectedViewAgenda,
     terminal,
     unselectedGridView,
     viewAgenda,
+    volunteerActivism,
     workHistory,
   ];
 }

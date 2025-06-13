@@ -1,11 +1,16 @@
-
 import 'package:flutter/material.dart';
 
 ///Different sizes / gaps to be used around the app. Alternatively you can use Gap Package
 const kEmptyWidget = SizedBox.shrink();
-const kGap0 = SizedBox.square(dimension: 0,);
-const kGap5 = SizedBox.square(dimension: 5,);
-const kGap8 = SizedBox.square(dimension: 8,);
+const kGap0 = SizedBox.square(
+  dimension: 0,
+);
+const kGap5 = SizedBox.square(
+  dimension: 5,
+);
+const kGap8 = SizedBox.square(
+  dimension: 8,
+);
 
 ///Const of Paddings used around the app
 const kPad2 = EdgeInsets.all(2);
@@ -36,6 +41,8 @@ const kSizeH50 = Size(0, 50);
 const kSizeH60 = Size(0, 60);
 
 /// font size
+const dimen7 = 7.0;
+const dimen6 = 6.0;
 const dimen8 = 8.0;
 const dimen9 = 9.0;
 const dimen10 = 10.0;

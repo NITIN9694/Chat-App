@@ -89,48 +89,53 @@ class _MainPageState extends State<MainPage>
 
   @override
   Widget build(BuildContext context) {
-    return ZoomDrawer(
-      menuBackgroundColor: AppColors.colB6D,
-        menuScreen: SideMenu(onItemSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-            onTapSelectBottomBar(index);
-
-          });
-        }),
-        mainScreen: BlocBuilder<NavCubit, int>(
-          builder: (context, selectedIndex) {
-            return Scaffold(
-
-              backgroundColor: Colors.white,
-              body: Stack(
-                children: [
-                  _screens[selectedIndex],
-                  Align(
-                      alignment: Alignment.bottomCenter,
-                      child: AnimatedBuilder(
-                          animation: _animation,
-                          builder: (context, child) {
-                            return CustomBottomNavBar(
-                              animatedPosition: _animation.value,
-                              selectedIndex: selectedIndex,
-                              onTap: (index) {
-                                onTapSelectBottomBar(index);
-                              },
-                              icons: _icons,
-                              labels: _labels,
-                            );
-                          }))
-                ],
-              ),
-            );
-          },
-        ),
-        borderRadius: 24.0,
-        showShadow: true,
-        angle: 0.0,
-        slideWidth: MediaQuery.of(context).size.width * 0.65,
-        style: DrawerStyle.style3,
-        mainScreenTapClose: true);
+    return WillPopScope(
+      onWillPop: ()async{
+        return false;
+      },
+      child: ZoomDrawer(
+        menuBackgroundColor: AppColors.colB6D,
+          menuScreen: SideMenu(onItemSelected: (index) {
+            setState(() {
+              _selectedIndex = index;
+              onTapSelectBottomBar(index);
+      
+            });
+          }),
+          mainScreen: BlocBuilder<NavCubit, int>(
+            builder: (context, selectedIndex) {
+              return Scaffold(
+      
+                backgroundColor: Colors.white,
+                body: Stack(
+                  children: [
+                    _screens[selectedIndex],
+                    Align(
+                        alignment: Alignment.bottomCenter,
+                        child: AnimatedBuilder(
+                            animation: _animation,
+                            builder: (context, child) {
+                              return CustomBottomNavBar(
+                                animatedPosition: _animation.value,
+                                selectedIndex: selectedIndex,
+                                onTap: (index) {
+                                  onTapSelectBottomBar(index);
+                                },
+                                icons: _icons,
+                                labels: _labels,
+                              );
+                            }))
+                  ],
+                ),
+              );
+            },
+          ),
+          borderRadius: 24.0,
+          showShadow: true,
+          angle: 0.0,
+          slideWidth: MediaQuery.of(context).size.width * 0.65,
+          style: DrawerStyle.style3,
+          mainScreenTapClose: true),
+    );
   }
 }

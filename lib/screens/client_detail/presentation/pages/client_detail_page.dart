@@ -1,8 +1,10 @@
 import 'package:endeavors/gen/assets.gen.dart';
+import 'package:endeavors/infrastructure/routes/app_pages.dart';
 import 'package:endeavors/infrastructure/utils/app_common_widgets.dart';
 import 'package:endeavors/screens/client_detail/presentation/widgets/assigned_task_list.dart';
 import 'package:endeavors/screens/client_detail/presentation/widgets/assigned_training_list.dart';
 import 'package:endeavors/screens/client_detail/presentation/widgets/job_detail_tile.dart';
+import 'package:endeavors/screens/main_page/presentation/main_page.dart';
 import 'package:endeavors/styles/colors.dart';
 import 'package:endeavors/styles/sizes.dart';
 import 'package:endeavors/styles/styles.dart';
@@ -328,9 +330,35 @@ class _ClientPageDetailState extends State<ClientPageDetail> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(Assets.svg.docIconJob),
-                            SvgPicture.asset(Assets.svg.calIconJob),
-                            SvgPicture.asset(Assets.svg.docChatJob),
+                            GestureDetector(
+                                onTap:(){
+                                  Navigator.pushNamed(context, AppRoutes.profilePage);
+                                },
+
+                                child: SvgPicture.asset(Assets.svg.docIconJob)),
+                            GestureDetector(
+                                onTap:(){
+                                  Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => MainPage(initialIndex: 1,), // 1 = Jobs, 2 = Chat etc.
+                                    ),
+                                        (route) => false,
+                                  );
+                                },
+
+                                child: SvgPicture.asset(Assets.svg.calIconJob)),
+                            GestureDetector(
+                                onTap: (){
+                                  Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => MainPage(initialIndex: 2,), // 1 = Jobs, 2 = Chat etc.
+                                    ),
+                                        (route) => false,
+                                  );
+                                },
+                                child: SvgPicture.asset(Assets.svg.docChatJob)),
                             SvgPicture.asset(Assets.svg.callIconJob),
                             SizedBox(
                               width: 1.w,

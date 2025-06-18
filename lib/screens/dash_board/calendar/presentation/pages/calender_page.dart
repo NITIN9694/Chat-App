@@ -25,9 +25,7 @@ class _CalenderPageState extends State<CalenderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-      ),
+
       backgroundColor: AppColors.col007FC4,
       body: Stack(
         children: [

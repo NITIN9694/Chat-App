@@ -9,5 +9,7 @@ abstract class AppRoutes {
   static const clientPageDetail = '/clientPageDetail';
   static const jobDetailPage= '/jobDetailPage';
   static const chatDetailPage= '/chatDetailPage';
+  static const profilePage= '/profilePage';
+
 
 }

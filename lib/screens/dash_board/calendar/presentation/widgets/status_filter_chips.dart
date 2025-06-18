@@ -49,7 +49,7 @@ class _StatusFilterChipsState extends State<StatusFilterChips> {
                   color: isSelected
                       ? AppColors.colE2F1FA
                       : Color(0xFF457626).withOpacity(0.2),
-                  width: 2,
+
                 ),
               ),
               child: Row(

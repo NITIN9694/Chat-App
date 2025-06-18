@@ -45,14 +45,23 @@ class $AssetsImageGen {
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/airport_shuttle.svg
+  String get airportShuttle => 'assets/svg/airport_shuttle.svg';
+
   /// File path: assets/svg/alarm.svg
   String get alarm => 'assets/svg/alarm.svg';
+
+  /// File path: assets/svg/alarm_fill.svg
+  String get alarmFill => 'assets/svg/alarm_fill.svg';
 
   /// File path: assets/svg/alarm_smart_wake.svg
   String get alarmSmartWake => 'assets/svg/alarm_smart_wake.svg';
 
   /// File path: assets/svg/apartment.svg
   String get apartment => 'assets/svg/apartment.svg';
+
+  /// File path: assets/svg/barcode.svg
+  String get barcode => 'assets/svg/barcode.svg';
 
   /// File path: assets/svg/bottom_chat.svg
   String get bottomChat => 'assets/svg/bottom_chat.svg';
@@ -72,6 +81,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/cal_icon_job.svg
   String get calIconJob => 'assets/svg/cal_icon_job.svg';
 
+  /// File path: assets/svg/calendar_month (1).svg
+  String get calendarMonth1 => 'assets/svg/calendar_month (1).svg';
+
   /// File path: assets/svg/calendar_month.svg
   String get calendarMonth => 'assets/svg/calendar_month.svg';
 
@@ -81,11 +93,20 @@ class $AssetsSvgGen {
   /// File path: assets/svg/call_icon_job.svg
   String get callIconJob => 'assets/svg/call_icon_job.svg';
 
+  /// File path: assets/svg/cancel.svg
+  String get cancel => 'assets/svg/cancel.svg';
+
   /// File path: assets/svg/captive_portal.svg
   String get captivePortal => 'assets/svg/captive_portal.svg';
 
   /// File path: assets/svg/checked_bag.svg
   String get checkedBag => 'assets/svg/checked_bag.svg';
+
+  /// File path: assets/svg/clinical_notes.svg
+  String get clinicalNotes => 'assets/svg/clinical_notes.svg';
+
+  /// File path: assets/svg/clock_loader_40.svg
+  String get clockLoader40 => 'assets/svg/clock_loader_40.svg';
 
   /// File path: assets/svg/contacts.svg
   String get contacts => 'assets/svg/contacts.svg';
@@ -99,11 +120,23 @@ class $AssetsSvgGen {
   /// File path: assets/svg/doc_icon_job.svg
   String get docIconJob => 'assets/svg/doc_icon_job.svg';
 
+  /// File path: assets/svg/event_busy.svg
+  String get eventBusy => 'assets/svg/event_busy.svg';
+
   /// File path: assets/svg/explore.svg
   String get explore => 'assets/svg/explore.svg';
 
+  /// File path: assets/svg/flag_2.svg
+  String get flag2 => 'assets/svg/flag_2.svg';
+
   /// File path: assets/svg/grid_view.svg
   String get gridView => 'assets/svg/grid_view.svg';
+
+  /// File path: assets/svg/keyboard_arrow_down.svg
+  String get keyboardArrowDown => 'assets/svg/keyboard_arrow_down.svg';
+
+  /// File path: assets/svg/keyboard_arrow_up.svg
+  String get keyboardArrowUp => 'assets/svg/keyboard_arrow_up.svg';
 
   /// File path: assets/svg/location_on.svg
   String get locationOn => 'assets/svg/location_on.svg';
@@ -114,11 +147,23 @@ class $AssetsSvgGen {
   /// File path: assets/svg/login_eyes_off.svg
   String get loginEyesOff => 'assets/svg/login_eyes_off.svg';
 
+  /// File path: assets/svg/mode_comment.svg
+  String get modeComment => 'assets/svg/mode_comment.svg';
+
+  /// File path: assets/svg/mode_off_on.svg
+  String get modeOffOn => 'assets/svg/mode_off_on.svg';
+
   /// File path: assets/svg/msg_icon_job.svg
   String get msgIconJob => 'assets/svg/msg_icon_job.svg';
 
   /// File path: assets/svg/notification_add.svg
   String get notificationAdd => 'assets/svg/notification_add.svg';
+
+  /// File path: assets/svg/person.svg
+  String get person => 'assets/svg/person.svg';
+
+  /// File path: assets/svg/report.svg
+  String get report => 'assets/svg/report.svg';
 
   /// File path: assets/svg/search.svg
   String get search => 'assets/svg/search.svg';
@@ -143,31 +188,46 @@ class $AssetsSvgGen {
 
   /// List of all assets
   List<String> get values => [
+    airportShuttle,
     alarm,
+    alarmFill,
     alarmSmartWake,
     apartment,
+    barcode,
     bottomChat,
     bottomHome,
     bottomJob,
     bottomSelectedHome,
     bottonCalendar,
     calIconJob,
+    calendarMonth1,
     calendarMonth,
     call,
     callIconJob,
+    cancel,
     captivePortal,
     checkedBag,
+    clinicalNotes,
+    clockLoader40,
     contacts,
     corporateFare,
     docChatJob,
     docIconJob,
+    eventBusy,
     explore,
+    flag2,
     gridView,
+    keyboardArrowDown,
+    keyboardArrowUp,
     locationOn,
     logEyesOn,
     loginEyesOff,
+    modeComment,
+    modeOffOn,
     msgIconJob,
     notificationAdd,
+    person,
+    report,
     search,
     selectedViewAgenda,
     terminal,

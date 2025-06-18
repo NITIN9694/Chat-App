@@ -3,6 +3,7 @@ import 'package:endeavors/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 class AppMenuBar extends StatelessWidget {
   const AppMenuBar({super.key});
@@ -13,7 +14,11 @@ class AppMenuBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SvgPicture.asset(Assets.svg.terminal,height: 22.h,width: 22.w,),
+        GestureDetector(
+            onTap: (){
+              ZoomDrawer.of(context)!.toggle();
+            },
+            child: SvgPicture.asset(Assets.svg.terminal,height: 22.h,width: 22.w,)),
         Spacer(),
         Assets.image.appLogo.image(fit: BoxFit.contain,width: 90.w,height: 18.h),
         Spacer(),

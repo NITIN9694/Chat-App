@@ -14,113 +14,127 @@ class ClientGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return  GridView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      scrollDirection: Axis.vertical,
-      padding: const EdgeInsets.all(12),
-      gridDelegate:
-      SliverGridDelegateWithFixedCrossAxisCount(
-
-        crossAxisCount: getCrossAxisCount(context),
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 12,
-        childAspectRatio: getChildAspectRatio(context),
+    return SingleChildScrollView(
+      child:  Column(
+        children: List.generate(
+          (dashBoardPersonModel.length / 2).ceil(),
+              (index) {
+            final first = dashBoardPersonModel[index * 2];
+            final second = (index * 2 + 1 < dashBoardPersonModel.length)
+                ? dashBoardPersonModel[index * 2 + 1]
+                : null;
+            final person =    dashBoardPersonModel[index];
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: Row(
+                children: [
+                  Expanded(child: personCard(person)),
+                  SizedBox(width: 12.w),
+                  if (second != null)
+                    Expanded(child: personCard(person))
+                  else
+                    Expanded(child: Container()), // Empty to fill space
+                ],
+              ),
+            );
+          },
+        ),
       ),
-      itemCount: dashBoardPersonModel.length,
-      itemBuilder: (context, index) {
-        final person =
-        dashBoardPersonModel[index];
-        return Container(
-            padding: EdgeInsets.all(10.sp),
-            decoration: BoxDecoration(
-              color: AppColors.colWhite,
+    );
 
-              borderRadius: BorderRadius.circular(15.sp),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  blurRadius: 8,
-                  offset: Offset(0, 4),
+  }
+
+  Widget personCard(ClientPersonModel person){
+    return
+      Container(
+                padding: EdgeInsets.all(10.sp),
+                margin: EdgeInsets.all(5.sp),
+                decoration: BoxDecoration(
+                  color: AppColors.colWhite,
+
+                  borderRadius: BorderRadius.circular(15.sp),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            child: LayoutBuilder(
+                child: LayoutBuilder(
 
-              builder: (context,constraints){
-                return    Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment:
-                  CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                  builder: (context,constraints){
+                    return    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 40.h,
-                          width: 40.w,
-                          child: CircleAvatar(
-
-                            radius: 16.sp,
-                            backgroundImage:
-                            AssetImage(person.avatarUrl),
-                            backgroundColor:  AppColors.colE2F1FA,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                              person.name,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: regularTextStyle(fontSize: dimen11.sp, color: AppColors.col8888.withOpacity(0.5))
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 6,),
-                        Text("VRS Case ID:",
-                          style: regularTextStyle(fontSize: dimen8.sp, color: AppColors.col718E),
-                        ),
-                        Text(person.caseId,
-                          style: mediumTextStyle(fontSize: dimen11.sp, color: AppColors.col718E),
-                        ),
-                        SizedBox(height: 12,),
-
-                      ],
-                    ),
-
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Job Status",
-                          style: regularTextStyle(fontSize: dimen8.sp, color: AppColors.col718E),
-                        ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text(person.jobStatus,
-                              style: mediumTextStyle(fontSize: dimen11.sp, color: AppColors.col00B383),
+                            SizedBox(
+                              height: 40.h,
+                              width: 40.w,
+                              child: CircleAvatar(
+
+                                radius: 16.sp,
+                                backgroundImage:
+                                AssetImage(person.avatarUrl),
+                                backgroundColor:  AppColors.colE2F1FA,
+                              ),
                             ),
-                            SvgPicture.asset(Assets.svg.call,height: 15.h,width: 15.w,)
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                  person.name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: regularTextStyle(fontSize: dimen11.sp, color: AppColors.col8888.withOpacity(0.5))
+                              ),
+                            ),
                           ],
                         ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 6,),
+                            Text("VRS Case ID:",
+                              style: regularTextStyle(fontSize: dimen8.sp, color: AppColors.col718E),
+                            ),
+                            Text(person.caseId,
+                              style: mediumTextStyle(fontSize: dimen11.sp, color: AppColors.col718E),
+                            ),
+                            SizedBox(height: 12,),
+
+                          ],
+                        ),
+
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Job Status",
+                              style: regularTextStyle(fontSize: dimen8.sp, color: AppColors.col718E),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(person.jobStatus,
+                                  style: mediumTextStyle(fontSize: dimen11.sp, color: AppColors.col00B383),
+                                ),
+                                SvgPicture.asset(Assets.svg.call,height: 15.h,width: 15.w,)
+                              ],
+                            ),
+                          ],
+                        )
                       ],
-                    )
-                  ],
-                );
-              },
+                    );
+                  },
 
-            ));
-
-      },
-    );
+                ));
   }
+
   int getCrossAxisCount(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 

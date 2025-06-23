@@ -1,9 +1,9 @@
 import 'package:endeavors/infrastructure/utils/base_layout.dart';
 import 'package:endeavors/screens/auth/bloc/login_bloc.dart';
-import 'package:endeavors/screens/dash_board/client/bloc/client_bloc.dart';
-import 'package:endeavors/screens/main_page/bloc/nav_cubit.dart';
-import 'package:endeavors/screens/profile/bloc/profile_bloc.dart';
-import 'package:endeavors/screens/profile/data/repo/profile_employement_conditions_repo.dart';
+import 'package:endeavors/screens/case_manager/dash_board/case_manager/bloc/case_manager_bloc.dart';
+import 'package:endeavors/screens/case_manager/main_page/bloc/nav_cubit.dart';
+import 'package:endeavors/screens/case_manager/profile/bloc/profile_bloc.dart';
+import 'package:endeavors/screens/case_manager/profile/data/repo/profile_employement_conditions_repo.dart';
 import 'package:endeavors/screens/splash/bloc/splash_bloc.dart';
 import 'package:endeavors/initializer.dart';
 import 'package:endeavors/infrastructure/routes/app_pages.dart';
@@ -13,6 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:device_preview/device_preview.dart';
 
+import 'screens/client/client_main_page/bloc/client_main_nav.dart';
+
 void main() async {
   await Initializer.init();
 
@@ -20,7 +22,7 @@ void main() async {
   runApp(
       MyApp());
   //     DevicePreview(
-  //
+  // 
   //       builder: (context)=>const MyApp() ,
   //     )
   // );
@@ -41,8 +43,10 @@ class MyApp extends StatelessWidget {
             providers: [BlocProvider<SplashBloc>(create: (_) => SplashBloc()),
               BlocProvider<LoginBloc>(create: (_) => LoginBloc()),
               BlocProvider<NavCubit>(create: (_) => NavCubit()),
-              BlocProvider<ClientBloc>(create: (_) => ClientBloc()),
-              BlocProvider<ProfileBloc>(create: (_) => ProfileBloc(ProfileEmploymentConditionRepo()))
+              BlocProvider<CaseManagerBloc>(create: (_)=>CaseManagerBloc(),),
+              BlocProvider<ProfileBloc>(create: (_) => ProfileBloc(ProfileEmploymentConditionRepo())),
+              //Client
+              BlocProvider<ClientMainNav>(create: (_) => ClientMainNav()),
 
             ],
             child:BaseSafeAreaLayout(
@@ -52,12 +56,12 @@ class MyApp extends StatelessWidget {
                 builder: DevicePreview.appBuilder,
                 debugShowCheckedModeBanner: false,
 
-                title: 'Flutter Demo',
+                title: 'Endeavor',
                 theme: ThemeData(
                   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                   useMaterial3: true,
                 ),
-                initialRoute: AppRoutes.splash,
+                initialRoute: AppRoutes.clientMainPage,
                 onGenerateRoute: AppPages.onGenerateRoute,
               ))
             ) ;

@@ -60,8 +60,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/apartment.svg
   String get apartment => 'assets/svg/apartment.svg';
 
+  /// File path: assets/svg/badge.svg
+  String get badge => 'assets/svg/badge.svg';
+
   /// File path: assets/svg/barcode.svg
   String get barcode => 'assets/svg/barcode.svg';
+
+  /// File path: assets/svg/book-open.svg
+  String get bookOpen => 'assets/svg/book-open.svg';
 
   /// File path: assets/svg/bottom_chat.svg
   String get bottomChat => 'assets/svg/bottom_chat.svg';
@@ -193,7 +199,9 @@ class $AssetsSvgGen {
     alarmFill,
     alarmSmartWake,
     apartment,
+    badge,
     barcode,
+    bookOpen,
     bottomChat,
     bottomHome,
     bottomJob,

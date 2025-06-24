@@ -1,5 +1,6 @@
 
 ///styles.dart contains several style definitions for the app, like statusBar style, TextStyles, InputDecoration style and more.
+library;
 
 import 'package:endeavors/styles/sizes.dart';
 import 'package:flutter/material.dart';

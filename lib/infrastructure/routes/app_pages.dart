@@ -14,5 +14,7 @@ abstract class AppRoutes {
   //client page rout
   static const clientMainPage= '/clientMainPage';
   static const clientHomePage= '/clientHomePage';
+  static const clientCalendarPage= '/clientCalendarPage';
+  static const clientCourseLearn= '/clientCourseLearn';
 
 }

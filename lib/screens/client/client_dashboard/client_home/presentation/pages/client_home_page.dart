@@ -232,7 +232,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
                           //Calender View
 
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20.h),
+                            padding: EdgeInsets.symmetric(vertical: 30.h),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -250,9 +250,14 @@ class _ClientHomePageState extends State<ClientHomePage> {
                                           text: " | Today ${DateFormat('EEE, MMM d').format(today)} ",
                                           style: regularTextStyle(fontSize: dimen12.sp, color: AppColors.colBlack))
                                     ])),
-                                    Text(
-                                      "View ↗",
-                                      style: regularTextStyle(fontSize: dimen12.sp, color: AppColors.col004576),
+                                    GestureDetector(
+                                      onTap: (){
+                                        Navigator.pushNamed(context, AppRoutes.clientCalendarPage);
+                                      },
+                                      child: Text(
+                                        "View ↗",
+                                        style: regularTextStyle(fontSize: dimen12.sp, color: AppColors.col004576),
+                                      ),
                                     )
                                   ],
                                 ),
@@ -268,7 +273,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
                           ClientHomeEventTile(constraintsHeight, constraintsWidth),
 
                           //Pending Task Tile
-                          ClientPendingTaskTile(),
+                          ClientPendingTaskTile(constraintsHeight,constraintsWidth),
                           SizedBox(
                             height: 90.h,
                           ),

@@ -7,7 +7,9 @@ import 'package:endeavors/screens/case_manager/dash_board/jobs/presentation/page
 import 'package:endeavors/screens/case_manager/job_details/presentation/pages/job_detail_page.dart';
 import 'package:endeavors/screens/case_manager/main_page/presentation/main_page.dart';
 import 'package:endeavors/screens/case_manager/profile/presentation/pages/profile_page.dart';
+import 'package:endeavors/screens/client/client_calendar/presentation/pages/client_calendar_page.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_home/presentation/pages/client_home_page.dart';
+import 'package:endeavors/screens/client/client_dashboard/client_learn/presentation/pages/client_course_learn_page.dart';
 import 'package:endeavors/screens/client/client_main_page/presentation/client_main_page.dart';
 import 'package:endeavors/screens/splash/pages/splash_page.dart';
 import 'package:endeavors/infrastructure/routes/animated_slidedirection.dart';
@@ -61,6 +63,12 @@ class AppPages {
       case AppRoutes.clientHomePage
           :
         return SlidePageRoute(page: ClientHomePage(),direction: SlideDirection.rightToLeft);
+      case AppRoutes.clientCalendarPage
+          :
+        return SlidePageRoute(page: ClientCalendarPage(),direction: SlideDirection.rightToLeft);
+      case AppRoutes.clientCourseLearn
+          :
+        return SlidePageRoute(page: ClientCourseLearnPage(),direction: SlideDirection.rightToLeft);
       default:
         return MaterialPageRoute(
           builder: (_) =>

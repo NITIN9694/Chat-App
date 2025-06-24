@@ -22,6 +22,10 @@ class $AssetsImageGen {
   AssetGenImage get autoplay =>
       const AssetGenImage('assets/image/autoplay.png');
 
+  /// File path: assets/image/calendar_clock.png
+  AssetGenImage get calendarClock =>
+      const AssetGenImage('assets/image/calendar_clock.png');
+
   /// File path: assets/image/login_bg.png
   AssetGenImage get loginBg => const AssetGenImage('assets/image/login_bg.png');
 
@@ -36,6 +40,7 @@ class $AssetsImageGen {
     female,
     appLogo,
     autoplay,
+    calendarClock,
     loginBg,
     male1,
     male2,
@@ -59,6 +64,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/apartment.svg
   String get apartment => 'assets/svg/apartment.svg';
+
+  /// File path: assets/svg/autoplay (1).svg
+  String get autoplay1 => 'assets/svg/autoplay (1).svg';
 
   /// File path: assets/svg/badge.svg
   String get badge => 'assets/svg/badge.svg';
@@ -86,6 +94,12 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/cal_icon_job.svg
   String get calIconJob => 'assets/svg/cal_icon_job.svg';
+
+  /// File path: assets/svg/calendar_clock.svg
+  String get calendarClock => 'assets/svg/calendar_clock.svg';
+
+  /// File path: assets/svg/calendar_clock_1.svg
+  String get calendarClock1 => 'assets/svg/calendar_clock_1.svg';
 
   /// File path: assets/svg/calendar_month (1).svg
   String get calendarMonth1 => 'assets/svg/calendar_month (1).svg';
@@ -144,6 +158,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/keyboard_arrow_up.svg
   String get keyboardArrowUp => 'assets/svg/keyboard_arrow_up.svg';
 
+  /// File path: assets/svg/link.svg
+  String get link => 'assets/svg/link.svg';
+
   /// File path: assets/svg/location_on.svg
   String get locationOn => 'assets/svg/location_on.svg';
 
@@ -165,11 +182,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/notification_add.svg
   String get notificationAdd => 'assets/svg/notification_add.svg';
 
+  /// File path: assets/svg/open_in_new.svg
+  String get openInNew => 'assets/svg/open_in_new.svg';
+
   /// File path: assets/svg/person.svg
   String get person => 'assets/svg/person.svg';
 
   /// File path: assets/svg/report.svg
   String get report => 'assets/svg/report.svg';
+
+  /// File path: assets/svg/resume.svg
+  String get resume => 'assets/svg/resume.svg';
 
   /// File path: assets/svg/search.svg
   String get search => 'assets/svg/search.svg';
@@ -199,6 +222,7 @@ class $AssetsSvgGen {
     alarmFill,
     alarmSmartWake,
     apartment,
+    autoplay1,
     badge,
     barcode,
     bookOpen,
@@ -208,6 +232,8 @@ class $AssetsSvgGen {
     bottomSelectedHome,
     bottonCalendar,
     calIconJob,
+    calendarClock,
+    calendarClock1,
     calendarMonth1,
     calendarMonth,
     call,
@@ -227,6 +253,7 @@ class $AssetsSvgGen {
     gridView,
     keyboardArrowDown,
     keyboardArrowUp,
+    link,
     locationOn,
     logEyesOn,
     loginEyesOff,
@@ -234,8 +261,10 @@ class $AssetsSvgGen {
     modeOffOn,
     msgIconJob,
     notificationAdd,
+    openInNew,
     person,
     report,
+    resume,
     search,
     selectedViewAgenda,
     terminal,

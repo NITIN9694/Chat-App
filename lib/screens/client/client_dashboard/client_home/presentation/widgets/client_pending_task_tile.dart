@@ -9,7 +9,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ClientPendingTaskTile extends StatefulWidget {
-  const ClientPendingTaskTile({super.key});
+  double maxHeight;
+  double maxWidth;
+  ClientPendingTaskTile(this.maxHeight, this.maxWidth);
+
 
   @override
   State<ClientPendingTaskTile> createState() => _ClientPendingTaskTileState();
@@ -17,7 +20,7 @@ class ClientPendingTaskTile extends StatefulWidget {
 
 class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
   final PageController _controller = PageController(viewportFraction: 0.9);
-
+  bool isMark = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -113,30 +116,35 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
                               ),
                             ),
                             Divider(),
-                            Padding(
-                              padding: EdgeInsets.all(12.h),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1.sp),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.circular(2.h),
-                                      border: Border.all(color: AppColors.col6C7, width: 1.w),
+                            GestureDetector(
+                              onTap:(){
+                                _showBottomSheet(context);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(12.h),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(1.sp),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                        borderRadius: BorderRadius.circular(2.h),
+                                        border: Border.all(color: AppColors.col6C7, width: 1.w),
+                                      ),
+                                      child: Center(
+                                        child: Icon(Icons.done, color: Colors.transparent, size: 8.h),
+                                      ),
                                     ),
-                                    child: Center(
-                                      child: Icon(Icons.done, color: Colors.transparent, size: 8.h),
+                                    SizedBox(width: 5.w),
+                                    Text(
+                                      "Mark Complete",
+                                      style: regularTextStyle(
+                                        fontSize: dimen11.sp,
+                                        color: AppColors.col6C7,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(width: 5.w),
-                                  Text(
-                                    "Mark Complete",
-                                    style: regularTextStyle(
-                                      fontSize: dimen11.sp,
-                                      color: AppColors.col6C7,
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ]));
@@ -165,8 +173,170 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
   double getHeight(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    if (width >= 900) return 300.h; // Large tablets
-    if (width >= 600) return 200.h; // Small tablets
-    return 150.h; // Phones
+    if (width >= 900) return widget.maxHeight*0.3; // Large tablets
+    if (width >= 600) return widget.maxHeight*0.25; // Small tablets
+    return widget.maxHeight*0.2; // Phones
+  }
+
+  void _showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      backgroundColor: Colors.white,
+      builder: (context) {
+        return LayoutBuilder(
+          builder: (context,constraints){
+            final double constraintsHeight = constraints.maxHeight;
+            final double constraintsWidth = constraints.maxWidth;
+            return StatefulBuilder(builder: (context,setModalState){
+              return SizedBox(
+                height: constraintsHeight*0.7,
+                width: constraintsWidth*0.98,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding:  EdgeInsets.symmetric(horizontal: 15.w),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                            child: Container(
+                              height: 5,
+                              width:  MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                  color: AppColors.colD9D9.withOpacity(0.4),
+                                  borderRadius: BorderRadius.circular(10.r)
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("Task title here", style:semiBoldTextStyle(fontSize: dimen18.sp, color: AppColors.colBlack)),
+                              SvgPicture.asset(Assets.svg.calendarClock1),
+                            ],
+                          ),
+                          Container(
+                              padding: EdgeInsets.all(10.sp),
+                              margin: EdgeInsets.symmetric(vertical: 10.h),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                  color: AppColors.colPrimary.withOpacity(0.2)
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(Assets.svg.calendarMonth,
+                                    height: 13.h,
+                                    width: 13.w,
+                                  ),
+                                  SizedBox(width: 4.w,),
+                                  Text("Due By:Mon | 10 Jan 2025",
+                                    style: lightTextStyle(fontSize: 12.sp, color: AppColors.col004576),
+                                  )
+                                ],
+                              )
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Summary",
+                                style: semiBoldTextStyle(fontSize: 12.sp, color: AppColors.col6C7),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10.r),
+                                margin: EdgeInsets.symmetric(vertical: 10.h),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.r),
+                                    color: AppColors.col6C7.withOpacity(0.1)
+                                ),
+                                child: Center(
+                                    child:Text("You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
+                                      style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
+                                    )
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        setModalState(() {
+                          isMark =!isMark;
+                        });
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(20.r),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.r),
+                          color: AppColors.colE1E1E1.withOpacity(0.2),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(1.sp),
+                              decoration: BoxDecoration(
+                                color: isMark?AppColors.col007FC4:Colors.transparent,
+                                borderRadius: BorderRadius.circular(2.h),
+                                border: Border.all(color:isMark? AppColors.col007FC4: AppColors.col6C7, width: 1.w),
+                              ),
+                              child: Center(
+                                child: Icon(Icons.done, color:isMark? AppColors.colWhite:Colors.transparent, size: 14.h),
+                              ),
+                            ),
+                            SizedBox(width: 5.w),
+                            Text(
+                              "Mark Complete",
+                              style: regularTextStyle(
+                                fontSize: dimen20.sp,
+                                color: AppColors.col6C7,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(child: GestureDetector(
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 30.h,vertical: 20.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30.r),
+                          color: AppColors.col007FC4,
+                        ),
+                        child: Center(child: Text("Okay",
+                          style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
+                        ),),
+                      ),
+                    )),
+
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                  ],
+                ),
+              );
+            });
+          },
+        );
+      },
+    );
   }
 }

@@ -2,6 +2,7 @@ import 'package:endeavors/gen/assets.gen.dart';
 import 'package:endeavors/screens/case_manager/dash_board/case_manager/presentation/pages/case_manager_page.dart';
 import 'package:endeavors/screens/case_manager/main_page/presentation/widget/custom_bottom_nav_bar.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_home/presentation/pages/client_home_page.dart';
+import 'package:endeavors/screens/client/client_dashboard/client_learn/presentation/pages/client_course_learn_page.dart';
 import 'package:endeavors/screens/client/client_main_page/bloc/client_main_nav.dart';
 import 'package:endeavors/screens/side_menu/side_menu.dart';
 import 'package:endeavors/styles/colors.dart';
@@ -24,7 +25,7 @@ class _ClientMainPageState extends State<ClientMainPage>  with SingleTickerProvi
 
   final List<Widget> _screens = [
     ClientHomePage(),
-    Container(),
+    ClientCourseLearnPage(),
     Container(),
     Container(),
     Container(),

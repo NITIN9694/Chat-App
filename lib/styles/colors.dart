@@ -16,7 +16,8 @@ class AppColors {
   static Color colDBF0FF = Color(0xffDBF0FF);
   static Color colD6ECFF = Color(0xffD6ECFF);
   static Color colE8F7FF = Color(0xffE8F7FF);
-
+  static Color col1A1C1E = Color(0xff1A1C1E);
+  static Color colE7EDFF= Color(0xffE7EDFF);
   static Color colaCADBC = Color(0xffACADBC);
   static Color col1E1E = Color(0xFF1E1E1E);
   static Color colB6D = Color(0xFFB6D8F2);
@@ -30,7 +31,7 @@ class AppColors {
   static Color col268E2D = Color(0xff268E2D);
   static Color col007616 = Color(0xff007616);
   static Color col21B43 = Color(0xff21BE43);
-
+  static Color col396AFF = Color(0xff396AFF);
   static Color col3388 = Color(0xff338888);
   static Color col00B383 = Color(0xff00B383);
   static Color colEdF1 = Color(0xffEDF1F3);

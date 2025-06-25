@@ -1,5 +1,3 @@
-
-
 import 'package:endeavors/gen/assets.gen.dart';
 import 'package:endeavors/styles/colors.dart';
 import 'package:endeavors/styles/sizes.dart';
@@ -12,7 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class ClientInterviewTile extends StatefulWidget {
   double maxHeight;
   double maxWidth;
-  ClientInterviewTile(this.maxHeight,this.maxWidth, {super.key});
+  ClientInterviewTile(this.maxHeight, this.maxWidth, {super.key});
 
   @override
   State<ClientInterviewTile> createState() => _ClientInterviewTileState();
@@ -24,7 +22,7 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.maxHeight * 0.4,
+      height: widget.maxHeight * 0.35,
       child: Column(
         children: [
           Expanded(
@@ -33,7 +31,7 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
               itemCount: 3,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     _showBottomSheet(context);
                   },
                   child: Container(
@@ -101,7 +99,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                                       height: 11.h,
                                       width: 11.w,
                                     ),
-                                    SizedBox(width: 4.w,),
+                                    SizedBox(
+                                      width: 4.w,
+                                    ),
                                     Text(
                                       "12:00 - 15:30 EST",
                                       style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
@@ -113,10 +113,10 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                           ],
                         ),
                         Padding(
-                          padding:  EdgeInsets.symmetric(vertical: 15.h),
+                          padding: EdgeInsets.symmetric(vertical: 15.h),
                           child: Text(
                             "You have an interview for Data Entry role... "
-                                "The screening process shall determine the further progress.",
+                            "The screening process shall determine the further progress.",
                             style: regularTextStyle(
                               fontSize: 10.sp,
                               color: Colors.grey[700],
@@ -173,6 +173,7 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
       ),
     );
   }
+
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -183,18 +184,18 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
       backgroundColor: Colors.white,
       builder: (context) {
         return LayoutBuilder(
-          builder: (context,constraints){
+          builder: (context, constraints) {
             final double constraintsHeight = constraints.maxHeight;
             final double constraintsWidth = constraints.maxWidth;
-            return StatefulBuilder(builder: (context,setModalState){
+            return StatefulBuilder(builder: (context, setModalState) {
               return SizedBox(
-                height: constraintsHeight*0.7,
-                width: constraintsWidth*0.98,
+                height: constraintsHeight * 0.7,
+                width: constraintsWidth * 0.98,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 15.w),
+                      padding: EdgeInsets.symmetric(horizontal: 15.w),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,11 +206,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                           Center(
                             child: Container(
                               height: 5,
-                              width:  MediaQuery.of(context).size.width * 0.4,
+                              width: MediaQuery.of(context).size.width * 0.4,
                               decoration: BoxDecoration(
-                                  color: AppColors.colD9D9.withOpacity(0.4),
-                                  borderRadius: BorderRadius.circular(10.r)
-                              ),
+                                  color: AppColors.colD9D9.withOpacity(0.4), borderRadius: BorderRadius.circular(10.r)),
                             ),
                           ),
                           SizedBox(
@@ -219,9 +218,12 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text("First screening round", style:regularTextStyle(fontSize: dimen18.sp, color: AppColors.colBlack.withOpacity(0.5))),
-                              SvgPicture.asset(Assets.svg.contacts,
-                                 height: 18.h,
+                              Text("First screening round",
+                                  style: regularTextStyle(
+                                      fontSize: dimen18.sp, color: AppColors.colBlack.withOpacity(0.5))),
+                              SvgPicture.asset(
+                                Assets.svg.contacts,
+                                height: 18.h,
                                 width: 18.w,
                               ),
                             ],
@@ -229,66 +231,71 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                           SizedBox(
                             height: 10.h,
                           ),
-                        Row(
-                          children:  [
-                            Expanded(
-                              child: Container(
-                                padding: EdgeInsets.all(5.sp),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.sp),
-                                  color: AppColors.colE2F1FA,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      Assets.svg.calendarMonth,
-                                      height: 11.h,
-                                      width: 11.w,
-                                    ),
-                                    SizedBox(width: 4.w,),
-                                    Text(
-                                      "TUE | 14 Jan 2025",
-                                      style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 20),
-                            Expanded(
-                              child: Container(
-                                padding: EdgeInsets.all(5.sp),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.sp),
-                                  color: AppColors.colE2F1FA,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      Assets.svg.alarm,
-                                      height: 11.h,
-                                      width: 11.w,
-                                    ),
-                                    SizedBox(width: 4.w,),
-                                    Text(
-                                      "12:00 - 15:30 EST",
-                                      style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
-                                    ),
-                                  ],
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(5.sp),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.sp),
+                                    color: AppColors.colE2F1FA,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(
+                                        Assets.svg.calendarMonth,
+                                        height: 11.h,
+                                        width: 11.w,
+                                      ),
+                                      SizedBox(
+                                        width: 4.w,
+                                      ),
+                                      Text(
+                                        "TUE | 14 Jan 2025",
+                                        style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                            ),
+                              SizedBox(width: 20),
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(5.sp),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.sp),
+                                    color: AppColors.colE2F1FA,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(
+                                        Assets.svg.alarm,
+                                        height: 11.h,
+                                        width: 11.w,
+                                      ),
+                                      SizedBox(
+                                        width: 4.w,
+                                      ),
+                                      Text(
+                                        "12:00 - 15:30 EST",
+                                        style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           Padding(
-                            padding:  EdgeInsets.symmetric(vertical:12.h),
+                            padding: EdgeInsets.symmetric(vertical: 12.h),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Summary",
+                                Text(
+                                  "Summary",
                                   style: semiBoldTextStyle(fontSize: 11.sp, color: AppColors.col6C7),
                                 ),
                                 Container(
@@ -296,13 +303,12 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                                   margin: EdgeInsets.symmetric(vertical: 5.h),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10.r),
-                                      color: AppColors.col6C7.withOpacity(0.1)
-                                  ),
+                                      color: AppColors.col6C7.withOpacity(0.1)),
                                   child: Center(
-                                      child:Text("You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
-                                        style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
-                                      )
-                                  ),
+                                      child: Text(
+                                    "You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
+                                    style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
+                                  )),
                                 ),
                               ],
                             ),
@@ -317,44 +323,50 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                         color: AppColors.colE1E1E1.withOpacity(0.2),
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(Assets.svg.apartment,colorFilter: ColorFilter.mode(AppColors.col007FC4, BlendMode.srcIn),
-                          height: 10.h,
-                            width: 10.w,
-                          ),
-                          SizedBox(width: 10.w,),
-                          Expanded(
-                            child: Text("Zen Office Inc, Round Rock, Texas",
-                            style: semiBoldTextStyle(fontSize: dimen15.sp, color: AppColors.col007FC4),
-
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              Assets.svg.apartment,
+                              colorFilter: ColorFilter.mode(AppColors.col007FC4, BlendMode.srcIn),
+                              height: 23.h,
+                              width: 23.w,
                             ),
-                          ),
-                          Spacer(),
-                          SvgPicture.asset(Assets.svg.locationOn,
-                            height: 18.h,
-                            width: 18.w,
-                          )
-                         ]
-                      ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Zen Office Inc, Round Rock, Texas",
+                                style: semiBoldTextStyle(fontSize: dimen15.sp, color: AppColors.col007FC4),
+                              ),
+                            ),
+                            SvgPicture.asset(
+                              Assets.svg.locationOn,
+                              height: 18.h,
+                              width: 18.w,
+                            )
+                          ]),
                     ),
-                    Expanded(child: GestureDetector(
-                      onTap: (){
+                    Expanded(
+                        child: GestureDetector(
+                      onTap: () {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 30.h,vertical: 20.w),
+                        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 35.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30.r),
                           color: AppColors.col007FC4,
                         ),
-                        child: Center(child: Text("Okay",
-                          style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
-                        ),),
+                        child: Center(
+                          child: Text(
+                            "Okay",
+                            style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
+                          ),
+                        ),
                       ),
                     )),
-
                     SizedBox(
                       height: 2.h,
                     ),

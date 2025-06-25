@@ -13,7 +13,6 @@ class ClientPendingTaskTile extends StatefulWidget {
   double maxWidth;
   ClientPendingTaskTile(this.maxHeight, this.maxWidth);
 
-
   @override
   State<ClientPendingTaskTile> createState() => _ClientPendingTaskTileState();
 }
@@ -117,7 +116,7 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
                             ),
                             Divider(),
                             GestureDetector(
-                              onTap:(){
+                              onTap: () {
                                 _showBottomSheet(context);
                               },
                               child: Padding(
@@ -173,9 +172,9 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
   double getHeight(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    if (width >= 900) return widget.maxHeight*0.3; // Large tablets
-    if (width >= 600) return widget.maxHeight*0.25; // Small tablets
-    return widget.maxHeight*0.2; // Phones
+    if (width >= 900) return widget.maxHeight * 0.3; // Large tablets
+    if (width >= 600) return widget.maxHeight * 0.25; // Small tablets
+    return widget.maxHeight * 0.22; // Phones
   }
 
   void _showBottomSheet(BuildContext context) {
@@ -188,18 +187,18 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
       backgroundColor: Colors.white,
       builder: (context) {
         return LayoutBuilder(
-          builder: (context,constraints){
+          builder: (context, constraints) {
             final double constraintsHeight = constraints.maxHeight;
             final double constraintsWidth = constraints.maxWidth;
-            return StatefulBuilder(builder: (context,setModalState){
+            return StatefulBuilder(builder: (context, setModalState) {
               return SizedBox(
-                height: constraintsHeight*0.7,
-                width: constraintsWidth*0.98,
+                height: constraintsHeight * 0.7,
+                width: constraintsWidth * 0.98,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 15.w),
+                      padding: EdgeInsets.symmetric(horizontal: 15.w),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -207,11 +206,9 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
                           Center(
                             child: Container(
                               height: 5,
-                              width:  MediaQuery.of(context).size.width * 0.4,
+                              width: MediaQuery.of(context).size.width * 0.4,
                               decoration: BoxDecoration(
-                                  color: AppColors.colD9D9.withOpacity(0.4),
-                                  borderRadius: BorderRadius.circular(10.r)
-                              ),
+                                  color: AppColors.colD9D9.withOpacity(0.4), borderRadius: BorderRadius.circular(10.r)),
                             ),
                           ),
                           SizedBox(
@@ -221,37 +218,48 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text("Task title here", style:semiBoldTextStyle(fontSize: dimen18.sp, color: AppColors.colBlack)),
+                              Text("Task title here",
+                                  style: semiBoldTextStyle(fontSize: dimen18.sp, color: AppColors.colBlack)),
                               SvgPicture.asset(Assets.svg.calendarClock1),
                             ],
                           ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
                           Container(
-                              padding: EdgeInsets.all(10.sp),
-                              margin: EdgeInsets.symmetric(vertical: 10.h),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.r),
-                                  color: AppColors.colPrimary.withOpacity(0.2)
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(Assets.svg.calendarMonth,
-                                    height: 13.h,
-                                    width: 13.w,
-                                  ),
-                                  SizedBox(width: 4.w,),
-                                  Text("Due By:Mon | 10 Jan 2025",
-                                    style: lightTextStyle(fontSize: 12.sp, color: AppColors.col004576),
-                                  )
-                                ],
-                              )
+                            padding: EdgeInsets.all(5.sp),
+                            margin: EdgeInsets.only(right: widget.maxWidth * 0.5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.sp),
+                              color: AppColors.colE2F1FA,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Assets.svg.calendarMonth,
+                                  height: 11.h,
+                                  width: 11.w,
+                                ),
+                                SizedBox(
+                                  width: 4.w,
+                                ),
+                                Text(
+                                  "Due By:  12 Jan 2025",
+                                  style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Summary",
+                              Text(
+                                "Summary",
                                 style: semiBoldTextStyle(fontSize: 12.sp, color: AppColors.col6C7),
                               ),
                               Container(
@@ -259,13 +267,12 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
                                 margin: EdgeInsets.symmetric(vertical: 10.h),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.r),
-                                    color: AppColors.col6C7.withOpacity(0.1)
-                                ),
+                                    color: AppColors.col6C7.withOpacity(0.1)),
                                 child: Center(
-                                    child:Text("You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
-                                      style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
-                                    )
-                                ),
+                                    child: Text(
+                                  "You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
+                                  style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
+                                )),
                               ),
                             ],
                           ),
@@ -273,13 +280,13 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         setModalState(() {
-                          isMark =!isMark;
+                          isMark = !isMark;
                         });
                       },
                       child: Container(
-                        padding: EdgeInsets.all(20.r),
+                        padding: EdgeInsets.all(15.r),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.r),
                           color: AppColors.colE1E1E1.withOpacity(0.2),
@@ -288,22 +295,26 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            SizedBox(
+                              width: 20.w,
+                            ),
                             Container(
                               padding: EdgeInsets.all(1.sp),
                               decoration: BoxDecoration(
-                                color: isMark?AppColors.col007FC4:Colors.transparent,
+                                color: isMark ? AppColors.col007FC4 : Colors.transparent,
                                 borderRadius: BorderRadius.circular(2.h),
-                                border: Border.all(color:isMark? AppColors.col007FC4: AppColors.col6C7, width: 1.w),
+                                border: Border.all(color: isMark ? AppColors.col007FC4 : AppColors.col6C7, width: 1.w),
                               ),
                               child: Center(
-                                child: Icon(Icons.done, color:isMark? AppColors.colWhite:Colors.transparent, size: 14.h),
+                                child: Icon(Icons.done,
+                                    color: isMark ? AppColors.colWhite : Colors.transparent, size: 12.h),
                               ),
                             ),
-                            SizedBox(width: 5.w),
+                            SizedBox(width: 6.w),
                             Text(
                               "Mark Complete",
                               style: regularTextStyle(
-                                fontSize: dimen20.sp,
+                                fontSize: dimen18.sp,
                                 color: AppColors.col6C7,
                               ),
                             ),
@@ -311,22 +322,25 @@ class _ClientPendingTaskTileState extends State<ClientPendingTaskTile> {
                         ),
                       ),
                     ),
-                    Expanded(child: GestureDetector(
-                      onTap: (){
+                    Expanded(
+                        child: GestureDetector(
+                      onTap: () {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 30.h,vertical: 20.w),
+                        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30.r),
                           color: AppColors.col007FC4,
                         ),
-                        child: Center(child: Text("Okay",
-                          style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
-                        ),),
+                        child: Center(
+                          child: Text(
+                            "Okay",
+                            style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
+                          ),
+                        ),
                       ),
                     )),
-
                     SizedBox(
                       height: 2.h,
                     ),

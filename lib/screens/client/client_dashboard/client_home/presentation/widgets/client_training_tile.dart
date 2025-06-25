@@ -23,7 +23,7 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.maxHeight * 0.4,
+      height: widget.maxHeight * 0.35,
       child: Column(
         children: [
           Expanded(
@@ -32,31 +32,26 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
               itemCount: 3,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     _showBottomSheet(context);
                   },
                   child: Container(
                       width: MediaQuery.of(context).size.width,
-                      margin:
-                          EdgeInsets.only(top: 10.h, left: index == 0 ? 0.w : 10),
+                      margin: EdgeInsets.only(top: 10.h, left: index == 0 ? 0.w : 10),
                       decoration: BoxDecoration(
                         color: AppColors.colFAFAFA,
                         borderRadius: BorderRadius.circular(10.r),
-                        gradient: LinearGradient(
-                            colors: [
-                              AppColors.col2D60FF,
-                              AppColors.col539BFF,
-                            ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight),
+                        gradient: LinearGradient(colors: [
+                          AppColors.col2D60FF,
+                          AppColors.col539BFF,
+                        ], begin: Alignment.centerLeft, end: Alignment.centerRight),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(
-                                top: 10.w, left: 10.w, right: 10.w),
+                            padding: EdgeInsets.only(top: 10.w, left: 10.w, right: 10.w),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,16 +62,12 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                                   children: [
                                     Text(
                                       "Basic Work Ethics",
-                                      style: semiBoldTextStyle(
-                                          fontSize: dimen16.sp,
-                                          color: AppColors.colWhite),
+                                      style: semiBoldTextStyle(fontSize: dimen16.sp, color: AppColors.colWhite),
                                     ),
                                     Text(
                                       "14:30 minutes",
                                       style: regularTextStyle(
-                                          fontSize: dimen11.sp,
-                                          color: AppColors.colBlack
-                                              .withOpacity(0.5)),
+                                          fontSize: dimen11.sp, color: AppColors.colBlack.withOpacity(0.5)),
                                     ),
                                   ],
                                 ),
@@ -91,9 +82,7 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
                             child: Text(
                               "Due By",
-                              style: lightTextStyle(
-                                  fontSize: dimen10.sp,
-                                  color: AppColors.colWhite),
+                              style: lightTextStyle(fontSize: dimen10.sp, color: AppColors.colWhite),
                             ),
                           ),
                           Padding(
@@ -104,18 +93,14 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                               children: [
                                 Text(
                                   "12 Jan 2025",
-                                  style: semiBoldTextStyle(
-                                      fontSize: dimen16.sp,
-                                      color: AppColors.colWhite),
+                                  style: semiBoldTextStyle(fontSize: dimen16.sp, color: AppColors.colWhite),
                                 ),
                                 SizedBox(
                                   width: 10.w,
                                 ),
                                 Text(
                                   "⚠️ 4 days overdue",
-                                  style: lightTextStyle(
-                                      fontSize: dimen10,
-                                      color: AppColors.colFFCD00),
+                                  style: lightTextStyle(fontSize: dimen10, color: AppColors.colFFCD00),
                                 )
                               ],
                             ),
@@ -125,17 +110,13 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                             width: MediaQuery.of(context).size.width,
                             height: 60.h,
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: [
-                                    AppColors.colWhite.withOpacity(0.2),
-                                    AppColors.colWhite.withOpacity(0.2),
-                                  ],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight),
+                              gradient: LinearGradient(colors: [
+                                AppColors.colWhite.withOpacity(0.2),
+                                AppColors.colWhite.withOpacity(0.2),
+                              ], begin: Alignment.centerLeft, end: Alignment.centerRight),
                               color: AppColors.colWhite,
                               borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(10.h),
-                                  bottomRight: Radius.circular(10.h)),
+                                  bottomLeft: Radius.circular(10.h), bottomRight: Radius.circular(10.h)),
                             ),
                             child: Row(
                               children: [
@@ -144,8 +125,7 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                                   width: 120.w,
                                   height: 35.h,
                                   decoration: BoxDecoration(
-                                      color: AppColors.colWhite,
-                                      borderRadius: BorderRadius.circular(10.r)),
+                                      color: AppColors.colWhite, borderRadius: BorderRadius.circular(10.r)),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -160,9 +140,7 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                                       ),
                                       Text(
                                         "Send Reminder",
-                                        style: mediumTextStyle(
-                                            fontSize: dimen10.sp,
-                                            color: AppColors.col007FC4),
+                                        style: mediumTextStyle(fontSize: dimen10.sp, color: AppColors.col007FC4),
                                       ),
                                     ],
                                   ),
@@ -196,6 +174,7 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
       ),
     );
   }
+
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -206,18 +185,18 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
       backgroundColor: Colors.white,
       builder: (context) {
         return LayoutBuilder(
-          builder: (context,constraints){
+          builder: (context, constraints) {
             final double constraintsHeight = constraints.maxHeight;
             final double constraintsWidth = constraints.maxWidth;
-            return StatefulBuilder(builder: (context,setModalState){
+            return StatefulBuilder(builder: (context, setModalState) {
               return SizedBox(
-                height: constraintsHeight*0.7,
-                width: constraintsWidth*0.98,
+                height: constraintsHeight * 0.7,
+                width: constraintsWidth * 0.98,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 15.w),
+                      padding: EdgeInsets.symmetric(horizontal: 15.w),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,11 +207,9 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                           Center(
                             child: Container(
                               height: 5,
-                              width:  MediaQuery.of(context).size.width * 0.4,
+                              width: MediaQuery.of(context).size.width * 0.4,
                               decoration: BoxDecoration(
-                                  color: AppColors.colD9D9.withOpacity(0.4),
-                                  borderRadius: BorderRadius.circular(10.r)
-                              ),
+                                  color: AppColors.colD9D9.withOpacity(0.4), borderRadius: BorderRadius.circular(10.r)),
                             ),
                           ),
                           SizedBox(
@@ -242,8 +219,11 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text("First screening round", style:regularTextStyle(fontSize: dimen18.sp, color: AppColors.colBlack.withOpacity(0.5))),
-                              SvgPicture.asset(Assets.svg.autoplay1,
+                              Text("First screening round",
+                                  style: regularTextStyle(
+                                      fontSize: dimen18.sp, color: AppColors.colBlack.withOpacity(0.5))),
+                              SvgPicture.asset(
+                                Assets.svg.autoplay1,
                                 height: 18.h,
                                 width: 18.w,
                               ),
@@ -254,7 +234,7 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                           ),
                           Container(
                             padding: EdgeInsets.all(5.sp),
-                            margin: EdgeInsets.only(right: widget.maxWidth*0.5),
+                            margin: EdgeInsets.only(right: widget.maxWidth * 0.5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.sp),
                               color: AppColors.colE2F1FA,
@@ -267,7 +247,9 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                                   height: 11.h,
                                   width: 11.w,
                                 ),
-                                SizedBox(width: 4.w,),
+                                SizedBox(
+                                  width: 4.w,
+                                ),
                                 Text(
                                   "Due By:  12 Jan 2025",
                                   style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
@@ -276,12 +258,13 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                             ),
                           ),
                           Padding(
-                            padding:  EdgeInsets.symmetric(vertical:12.h),
+                            padding: EdgeInsets.symmetric(vertical: 12.h),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Summary",
+                                Text(
+                                  "Summary",
                                   style: semiBoldTextStyle(fontSize: 11.sp, color: AppColors.col6C7),
                                 ),
                                 Container(
@@ -289,13 +272,12 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                                   margin: EdgeInsets.symmetric(vertical: 5.h),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10.r),
-                                      color: AppColors.col6C7.withOpacity(0.1)
-                                  ),
+                                      color: AppColors.col6C7.withOpacity(0.1)),
                                   child: Center(
-                                      child:Text("You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
-                                        style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
-                                      )
-                                  ),
+                                      child: Text(
+                                    "You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
+                                    style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
+                                  )),
                                 ),
                               ],
                             ),
@@ -313,41 +295,48 @@ class _ClientTrainingTileState extends State<ClientTrainingTile> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(Assets.svg.link,colorFilter: ColorFilter.mode(AppColors.col007FC4, BlendMode.srcIn),
-                              height: 23.h,
-                              width: 23.w,
+                            SvgPicture.asset(
+                              Assets.svg.link,
+                              colorFilter: ColorFilter.mode(AppColors.col007FC4, BlendMode.srcIn),
+                              height: 15.h,
+                              width: 15.w,
                             ),
-                            SizedBox(width: 10.w,),
+                            SizedBox(
+                              width: 10.w,
+                            ),
                             Expanded(
-                              child: Text("Take the course",
-                                style: boldTextStyle(fontSize: dimen16.sp, color: AppColors.col007FC4),
-
+                              child: Text(
+                                "Take the course",
+                                style: boldTextStyle(fontSize: dimen14.sp, color: AppColors.col007FC4),
                               ),
                             ),
                             Spacer(),
-                            SvgPicture.asset(Assets.svg.openInNew,
-                              height: 18.h,
-                              width: 18.w,
+                            SvgPicture.asset(
+                              Assets.svg.openInNew,
+                              height: 15.h,
+                              width: 15.w,
                             )
-                          ]
-                      ),
+                          ]),
                     ),
-                    Expanded(child: GestureDetector(
-                      onTap: (){
+                    Expanded(
+                        child: GestureDetector(
+                      onTap: () {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 30.h,vertical: 20.w),
+                        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30.r),
                           color: AppColors.col007FC4,
                         ),
-                        child: Center(child: Text("Okay",
-                          style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
-                        ),),
+                        child: Center(
+                          child: Text(
+                            "Okay",
+                            style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
+                          ),
+                        ),
                       ),
                     )),
-
                     SizedBox(
                       height: 2.h,
                     ),

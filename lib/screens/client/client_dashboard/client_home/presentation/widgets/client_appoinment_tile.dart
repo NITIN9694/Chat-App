@@ -1,5 +1,3 @@
-
-
 import 'package:endeavors/gen/assets.gen.dart';
 import 'package:endeavors/styles/colors.dart';
 import 'package:endeavors/styles/sizes.dart';
@@ -12,7 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class ClientAppointmentTile extends StatefulWidget {
   double maxHeight;
   double maxWidth;
-   ClientAppointmentTile(this.maxHeight,this.maxWidth, {super.key});
+  ClientAppointmentTile(this.maxHeight, this.maxWidth, {super.key});
 
   @override
   State<ClientAppointmentTile> createState() => _ClientAppointmentTileState();
@@ -23,7 +21,6 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
 
   @override
   Widget build(BuildContext context) {
-
     return SizedBox(
       height: widget.maxHeight * 0.5,
       child: Column(
@@ -34,7 +31,7 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
               itemCount: 3,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     _showBottomSheet(context);
                   },
                   child: Padding(
@@ -54,7 +51,10 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                           child: Stack(
                             children: [
                               Positioned(
-                                  top: 0, right: 0, left: widget.maxWidth*0.5, child: SvgPicture.asset(Assets.svg.calendarClock)),
+                                  top: 0,
+                                  right: 0,
+                                  left: widget.maxWidth * 0.5,
+                                  child: SvgPicture.asset(Assets.svg.calendarClock)),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -198,6 +198,7 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
       ),
     );
   }
+
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -208,18 +209,18 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
       backgroundColor: Colors.white,
       builder: (context) {
         return LayoutBuilder(
-          builder: (context,constraints){
+          builder: (context, constraints) {
             final double constraintsHeight = constraints.maxHeight;
             final double constraintsWidth = constraints.maxWidth;
-            return StatefulBuilder(builder: (context,setModalState){
+            return StatefulBuilder(builder: (context, setModalState) {
               return SizedBox(
-                height: constraintsHeight*0.75,
-                width: constraintsWidth*0.98,
+                height: constraintsHeight * 0.75,
+                width: constraintsWidth * 0.98,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 15.w),
+                      padding: EdgeInsets.symmetric(horizontal: 15.w),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -230,11 +231,9 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                           Center(
                             child: Container(
                               height: 5,
-                              width:  MediaQuery.of(context).size.width * 0.4,
+                              width: MediaQuery.of(context).size.width * 0.4,
                               decoration: BoxDecoration(
-                                  color: AppColors.colD9D9.withOpacity(0.4),
-                                  borderRadius: BorderRadius.circular(10.r)
-                              ),
+                                  color: AppColors.colD9D9.withOpacity(0.4), borderRadius: BorderRadius.circular(10.r)),
                             ),
                           ),
                           SizedBox(
@@ -244,8 +243,12 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Expanded(child: Text("Role sync-up meeting with the authorities", style:regularTextStyle(fontSize: dimen18.sp, color: AppColors.colBlack.withOpacity(0.5)))),
-                              SvgPicture.asset(Assets.svg.calendarClock1,
+                              Expanded(
+                                  child: Text("Role sync-up meeting with the authorities",
+                                      style: regularTextStyle(
+                                          fontSize: dimen18.sp, color: AppColors.colBlack.withOpacity(0.5)))),
+                              SvgPicture.asset(
+                                Assets.svg.calendarClock1,
                                 height: 18.h,
                                 width: 18.w,
                               ),
@@ -255,7 +258,7 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                             height: 10.h,
                           ),
                           Row(
-                            children:  [
+                            children: [
                               Expanded(
                                 child: Container(
                                   padding: EdgeInsets.all(5.sp),
@@ -271,7 +274,9 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                                         height: 11.h,
                                         width: 11.w,
                                       ),
-                                      SizedBox(width: 4.w,),
+                                      SizedBox(
+                                        width: 4.w,
+                                      ),
                                       Text(
                                         "TUE | 14 Jan 2025",
                                         style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
@@ -296,7 +301,9 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                                         height: 11.h,
                                         width: 11.w,
                                       ),
-                                      SizedBox(width: 4.w,),
+                                      SizedBox(
+                                        width: 4.w,
+                                      ),
                                       Text(
                                         "12:00 - 15:30 EST",
                                         style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
@@ -308,12 +315,13 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                             ],
                           ),
                           Padding(
-                            padding:  EdgeInsets.symmetric(vertical:12.h),
+                            padding: EdgeInsets.symmetric(vertical: 12.h),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Summary",
+                                Text(
+                                  "Summary",
                                   style: semiBoldTextStyle(fontSize: 11.sp, color: AppColors.col6C7),
                                 ),
                                 Container(
@@ -321,13 +329,12 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                                   margin: EdgeInsets.symmetric(vertical: 5.h),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10.r),
-                                      color: AppColors.col6C7.withOpacity(0.1)
-                                  ),
+                                      color: AppColors.col6C7.withOpacity(0.1)),
                                   child: Center(
-                                      child:Text("You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
-                                        style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
-                                      )
-                                  ),
+                                      child: Text(
+                                    "You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
+                                    style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
+                                  )),
                                 ),
                               ],
                             ),
@@ -345,41 +352,47 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(Assets.svg.apartment,colorFilter: ColorFilter.mode(AppColors.col007FC4, BlendMode.srcIn),
+                            SvgPicture.asset(
+                              Assets.svg.apartment,
+                              colorFilter: ColorFilter.mode(AppColors.col007FC4, BlendMode.srcIn),
                               height: 23.h,
                               width: 23.w,
                             ),
-                            SizedBox(width: 10.w,),
+                            SizedBox(
+                              width: 10.w,
+                            ),
                             Expanded(
-                              child: Text("Zen Office Inc, Round Rock, Texas",
+                              child: Text(
+                                "Zen Office Inc, Round Rock, Texas",
                                 style: semiBoldTextStyle(fontSize: dimen15.sp, color: AppColors.col007FC4),
-
                               ),
                             ),
-                            Spacer(),
-                            SvgPicture.asset(Assets.svg.locationOn,
+                            SvgPicture.asset(
+                              Assets.svg.locationOn,
                               height: 18.h,
                               width: 18.w,
                             )
-                          ]
-                      ),
+                          ]),
                     ),
-                    Expanded(child: GestureDetector(
-                      onTap: (){
+                    Expanded(
+                        child: GestureDetector(
+                      onTap: () {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 30.h,vertical: 20.w),
+                        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30.r),
                           color: AppColors.col007FC4,
                         ),
-                        child: Center(child: Text("Okay",
-                          style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
-                        ),),
+                        child: Center(
+                          child: Text(
+                            "Okay",
+                            style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
+                          ),
+                        ),
                       ),
                     )),
-
                     SizedBox(
                       height: 2.h,
                     ),
@@ -392,5 +405,4 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
       },
     );
   }
-
 }

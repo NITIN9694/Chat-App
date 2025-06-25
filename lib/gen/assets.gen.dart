@@ -26,6 +26,10 @@ class $AssetsImageGen {
   AssetGenImage get calendarClock =>
       const AssetGenImage('assets/image/calendar_clock.png');
 
+  /// File path: assets/image/check_gif.gif
+  AssetGenImage get checkGif =>
+      const AssetGenImage('assets/image/check_gif.gif');
+
   /// File path: assets/image/login_bg.png
   AssetGenImage get loginBg => const AssetGenImage('assets/image/login_bg.png');
 
@@ -41,6 +45,7 @@ class $AssetsImageGen {
     appLogo,
     autoplay,
     calendarClock,
+    checkGif,
     loginBg,
     male1,
     male2,
@@ -49,6 +54,10 @@ class $AssetsImageGen {
 
 class $AssetsSvgGen {
   const $AssetsSvgGen();
+
+  /// File path: assets/svg/6b93a5193883d7a739c06f1157acd29d 1.svg
+  String get a6b93a5193883d7a739c06f1157acd29d1 =>
+      'assets/svg/6b93a5193883d7a739c06f1157acd29d 1.svg';
 
   /// File path: assets/svg/airport_shuttle.svg
   String get airportShuttle => 'assets/svg/airport_shuttle.svg';
@@ -107,6 +116,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/calendar_month.svg
   String get calendarMonth => 'assets/svg/calendar_month.svg';
 
+  /// File path: assets/svg/call 2.svg
+  String get call2 => 'assets/svg/call 2.svg';
+
   /// File path: assets/svg/call.svg
   String get call => 'assets/svg/call.svg';
 
@@ -118,6 +130,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/captive_portal.svg
   String get captivePortal => 'assets/svg/captive_portal.svg';
+
+  /// File path: assets/svg/chat_bubble.svg
+  String get chatBubble => 'assets/svg/chat_bubble.svg';
 
   /// File path: assets/svg/checked_bag.svg
   String get checkedBag => 'assets/svg/checked_bag.svg';
@@ -217,6 +232,7 @@ class $AssetsSvgGen {
 
   /// List of all assets
   List<String> get values => [
+    a6b93a5193883d7a739c06f1157acd29d1,
     airportShuttle,
     alarm,
     alarmFill,
@@ -236,10 +252,12 @@ class $AssetsSvgGen {
     calendarClock1,
     calendarMonth1,
     calendarMonth,
+    call2,
     call,
     callIconJob,
     cancel,
     captivePortal,
+    chatBubble,
     checkedBag,
     clinicalNotes,
     clockLoader40,

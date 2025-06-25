@@ -203,6 +203,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/person.svg
   String get person => 'assets/svg/person.svg';
 
+  /// File path: assets/svg/person_raised_hand.svg
+  String get personRaisedHand => 'assets/svg/person_raised_hand.svg';
+
   /// File path: assets/svg/report.svg
   String get report => 'assets/svg/report.svg';
 
@@ -281,6 +284,7 @@ class $AssetsSvgGen {
     notificationAdd,
     openInNew,
     person,
+    personRaisedHand,
     report,
     resume,
     search,

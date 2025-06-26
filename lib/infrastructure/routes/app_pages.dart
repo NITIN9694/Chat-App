@@ -1,4 +1,3 @@
-
 abstract class AppRoutes {
   static const splash = '/splash';
   static const login = '/login';
@@ -7,14 +6,14 @@ abstract class AppRoutes {
   static const job = '/job';
   static const calendarPage = '/calendarPage';
   static const caseManagerPageDetail = '/caseManagerPageDetail';
-  static const jobDetailPage= '/jobDetailPage';
-  static const chatDetailPage= '/chatDetailPage';
-  static const profilePage= '/profilePage';
+  static const jobDetailPage = '/jobDetailPage';
+  static const chatDetailPage = '/chatDetailPage';
+  static const profilePage = '/profilePage';
 
   //client page rout
-  static const clientMainPage= '/clientMainPage';
-  static const clientHomePage= '/clientHomePage';
-  static const clientCalendarPage= '/clientCalendarPage';
-  static const clientCourseLearn= '/clientCourseLearn';
-
+  static const clientMainPage = '/clientMainPage';
+  static const clientHomePage = '/clientHomePage';
+  static const clientCalendarPage = '/clientCalendarPage';
+  static const clientCourseLearn = '/clientCourseLearn';
+  static const clientSupportPage = '/clientSupportPage';
 }

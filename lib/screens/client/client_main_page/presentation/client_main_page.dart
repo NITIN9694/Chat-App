@@ -3,12 +3,14 @@ import 'package:endeavors/screens/case_manager/dash_board/case_manager/presentat
 import 'package:endeavors/screens/case_manager/main_page/presentation/widget/custom_bottom_nav_bar.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_home/presentation/pages/client_home_page.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_learn/presentation/pages/client_course_learn_page.dart';
+import 'package:endeavors/screens/client/client_dashboard/client_support/presentation/pages/client_support_page.dart';
 import 'package:endeavors/screens/client/client_main_page/bloc/client_main_nav.dart';
 import 'package:endeavors/screens/side_menu/side_menu.dart';
 import 'package:endeavors/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+
 class ClientMainPage extends StatefulWidget {
   final int initialIndex;
   const ClientMainPage({super.key, this.initialIndex = 0});
@@ -17,7 +19,7 @@ class ClientMainPage extends StatefulWidget {
   State<ClientMainPage> createState() => _ClientMainPageState();
 }
 
-class _ClientMainPageState extends State<ClientMainPage>  with SingleTickerProviderStateMixin {
+class _ClientMainPageState extends State<ClientMainPage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
   int _selectedIndex = 0;
@@ -27,7 +29,7 @@ class _ClientMainPageState extends State<ClientMainPage>  with SingleTickerProvi
     ClientHomePage(),
     ClientCourseLearnPage(),
     Container(),
-    Container(),
+    ClientSupportPage(),
     Container(),
   ];
 
@@ -86,7 +88,7 @@ class _ClientMainPageState extends State<ClientMainPage>  with SingleTickerProvi
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: ()async{
+      onWillPop: () async {
         return false;
       },
       child: ZoomDrawer(
@@ -95,13 +97,11 @@ class _ClientMainPageState extends State<ClientMainPage>  with SingleTickerProvi
             setState(() {
               _selectedIndex = index;
               onTapSelectBottomBar(index);
-
             });
           }),
           mainScreen: BlocBuilder<ClientMainNav, int>(
             builder: (context, selectedIndex) {
               return Scaffold(
-
                 backgroundColor: Colors.white,
                 body: Stack(
                   children: [

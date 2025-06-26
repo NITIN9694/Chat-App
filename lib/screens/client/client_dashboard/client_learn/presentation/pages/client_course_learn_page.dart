@@ -76,7 +76,7 @@ class _ClientCourseLearnPageState extends State<ClientCourseLearnPage> with Tick
               Center(
                   child: Text(
                 "Learn",
-                style: regularTextStyle(fontSize: dimen15.sp, color: AppColors.colWhite),
+                style: semiBoldTextStyle(fontSize: dimen15.sp, color: AppColors.colWhite),
               )),
               SizedBox(
                 height: 20.h,

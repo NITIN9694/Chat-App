@@ -1,3 +1,5 @@
+import 'package:endeavors/infrastructure/app_constant/app_constant.dart';
+import 'package:endeavors/infrastructure/local_storage/pref_manager.dart';
 import 'package:endeavors/screens/auth/bloc/login_bloc.dart';
 import 'package:endeavors/screens/auth/presentation/widgets/logintext_filed.dart';
 import 'package:endeavors/gen/assets.gen.dart';
@@ -45,10 +47,20 @@ class _LoginPageState extends State<LoginPage> {
         if (state is LoginLoading && !_isAnimating) {
           _animateToCircle();
         }
-        if (state is LoginSuccess) {
+        if(state is ClientLoginSuccess){
+          HiveManager.putBool(AppConstants.loggedIn, true);
+          HiveManager.putBool(AppConstants.isCaseManger, false);
+
+          Navigator.pushReplacementNamed(context, AppRoutes.clientMainPage);
+
+        }
+        if (state is CaseManagerLoginSuccess) {
           // _resetButton();
+          HiveManager.putBool(AppConstants.loggedIn, true);
+          HiveManager.putBool(AppConstants.isCaseManger, true);
 
           Navigator.pushReplacementNamed(context, AppRoutes.main);
+
         }
       },
       builder: (context, state) {
@@ -187,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                                       } else {
                                         context
                                             .read<LoginBloc>()
-                                            .add(LoginButtonPressed());
+                                            .add(LoginButtonPressed(emailController.text,passwordController.text));
                                       }
                                     },
                                     child: AnimatedContainer(

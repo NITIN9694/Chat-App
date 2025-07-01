@@ -39,7 +39,7 @@ class ApiProvider {
     _dio.interceptors.add(
         InterceptorsWrapper(onRequest: (RequestOptions options, handler) async {
       String accessToken =
-          await PrefManager.getString(AppConstants.accessToken);
+          HiveManager.getString(AppConstants.accessToken);
 
       options.headers = {'Content-Type': 'application/json'};
       options.headers = {'Authorization': 'Bearer $accessToken'};

@@ -2,6 +2,9 @@
 
 
 import 'package:endeavors/gen/assets.gen.dart';
+import 'package:endeavors/infrastructure/app_constant/app_constant.dart';
+import 'package:endeavors/infrastructure/local_storage/pref_manager.dart';
+import 'package:endeavors/infrastructure/routes/app_pages.dart';
 import 'package:endeavors/infrastructure/utils/app_toast.dart';
 import 'package:endeavors/styles/colors.dart';
 import 'package:endeavors/styles/sizes.dart';
@@ -21,9 +24,25 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  var isCaseManager = false;
+
+
   final items = ['Clients', 'Chat', 'Calendar', 'Job', 'Terms & Conditions', 'Sign Out'];
   final assetsName = [Assets.svg.person, Assets.svg.modeComment, Assets.svg.calendarMonth1, Assets.svg.checkedBag, Assets.svg.clinicalNotes,  Assets.svg.modeOffOn];
 
+  final clientItems = ['Profile', 'Calendar', 'Job', 'Support','Learn','Term & Conditions', 'Sign Out'];
+  final clientAssetsName = [Assets.svg.person, Assets.svg.calendarMonth1, Assets.svg.checkedBag, Assets.svg.chatBubble, Assets.svg.bookOpen,Assets.svg.clinicalNotes,  Assets.svg.modeOffOn];
+
+  void logOut(){
+    HiveManager.remove(AppConstants.loggedIn);
+    HiveManager.remove(AppConstants.isCaseManger);
+    Navigator.pushReplacementNamed(context, AppRoutes.login);
+  }
+  @override
+  void initState() {
+  isCaseManager = HiveManager.getBool(AppConstants.isCaseManger);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -38,63 +57,8 @@ class _SideMenuState extends State<SideMenu> {
               icon:   SvgPicture.asset(Assets.svg.cancel),
               onPressed: () => ZoomDrawer.of(context)!.close(),
             ),
-            ListView.builder(
-                itemCount: items.length,
-                shrinkWrap: true,
-                itemBuilder: (context,index){
-                  return  GestureDetector(
-                    onTap: (){
-                      ZoomDrawer.of(context)!.close();
-                      if(index==0){
-                        widget.onItemSelected(index);
-                      }else if(index==1){
-                        widget.onItemSelected(2);
 
-                      }else if(index==2){
-                        widget.onItemSelected(3);
-
-                      }else if(index==3){
-                        widget.onItemSelected(1);
-
-                      }else if(index==4){
-                        showCustomToast(
-                            context,
-                            "Work in progress",
-                            ToastType.warning);
-                      }else{
-                        showCustomToast(
-                            context,
-                            "Work in progress",
-                            ToastType.warning);
-                      }
-
-
-
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(12.r),
-                          margin: EdgeInsets.symmetric(horizontal: 12.w,vertical: 10.h),
-
-                          decoration: BoxDecoration(
-                            color: AppColors.colWhite,
-                            borderRadius: BorderRadius.circular(8.r)
-                          ),
-                          child: Center(
-                            child: SvgPicture.asset(assetsName[index], width: 11.h, height: 11.w),
-                          ),
-                        ),
-                         Text(items[index], style: TextStyle(color: Colors.white)),
-                      ],
-                    ),
-                  );
-
-
-                }),
-
+            isCaseManager?caseManagerWidget():clientWidget(),
             Spacer(),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -111,5 +75,119 @@ class _SideMenuState extends State<SideMenu> {
         ),
       ),
     );
+  }
+  Widget clientWidget(){
+    return   ListView.builder(
+        itemCount: clientItems.length,
+        shrinkWrap: true,
+        itemBuilder: (context,index){
+          return  GestureDetector(
+            onTap: (){
+              ZoomDrawer.of(context)!.close();
+              if(index==0){
+                widget.onItemSelected(index);
+              }else if(index==1){
+                Navigator.pushNamed(context, AppRoutes.clientCalendarPage);
+
+              }else if(index==2){
+                widget.onItemSelected(2);
+
+              }else if(index==3){
+                widget.onItemSelected(3);
+
+              }else if(index==4){
+                widget.onItemSelected(1);
+              }else if(index==5){
+                showCustomToast(
+                    context,
+                    "Work in progress",
+                    ToastType.warning);
+              }else{
+                logOut();
+              }
+
+
+
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(12.r),
+                  margin: EdgeInsets.symmetric(horizontal: 12.w,vertical: 10.h),
+
+                  decoration: BoxDecoration(
+                      color: AppColors.colWhite,
+                      borderRadius: BorderRadius.circular(8.r)
+                  ),
+                  child: Center(
+                    child: SvgPicture.asset(clientAssetsName[index], width: 11.h, height: 11.w,
+                    colorFilter: ColorFilter.mode(AppColors.col007FC4, BlendMode.srcIn),),
+
+                  ),
+                ),
+                Text(clientItems[index], style: TextStyle(color: Colors.white)),
+              ],
+            ),
+          );
+
+
+        });
+  }
+  Widget caseManagerWidget(){
+    return   ListView.builder(
+        itemCount: items.length,
+        shrinkWrap: true,
+        itemBuilder: (context,index){
+          return  GestureDetector(
+            onTap: (){
+              ZoomDrawer.of(context)!.close();
+              if(index==0){
+                widget.onItemSelected(index);
+              }else if(index==1){
+                widget.onItemSelected(2);
+
+              }else if(index==2){
+                widget.onItemSelected(3);
+
+              }else if(index==3){
+                widget.onItemSelected(1);
+
+              }else if(index==4){
+                showCustomToast(
+                    context,
+                    "Work in progress",
+                    ToastType.warning);
+              }else{
+                logOut();
+              }
+
+
+
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(12.r),
+                  margin: EdgeInsets.symmetric(horizontal: 12.w,vertical: 10.h),
+
+                  decoration: BoxDecoration(
+                      color: AppColors.colWhite,
+                      borderRadius: BorderRadius.circular(8.r)
+                  ),
+                  child: Center(
+                    child: SvgPicture.asset(assetsName[index], width: 11.h, height: 11.w),
+                  ),
+                ),
+                Text(items[index], style: TextStyle(color: Colors.white)),
+              ],
+            ),
+          );
+
+
+        });
   }
 }

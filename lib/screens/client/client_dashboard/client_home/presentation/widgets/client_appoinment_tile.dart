@@ -374,25 +374,31 @@ class _ClientAppointmentTileState extends State<ClientAppointmentTile> {
                             )
                           ]),
                     ),
-                    Expanded(
-                        child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30.r),
-                          color: AppColors.col007FC4,
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Okay",
-                            style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
+                    Spacer(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.w, vertical: 35.h),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 45.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30.r),
+                            color: AppColors.col007FC4,
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Okay",
+                              style: semiBoldTextStyle(
+                                  fontSize: dimen14.sp,
+                                  color: AppColors.colWhite),
+                            ),
                           ),
                         ),
                       ),
-                    )),
+                    ),
                     SizedBox(
                       height: 2.h,
                     ),

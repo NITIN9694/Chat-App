@@ -1,4 +1,6 @@
 
+import 'package:endeavors/infrastructure/app_constant/app_constant.dart';
+import 'package:endeavors/infrastructure/local_storage/pref_manager.dart';
 import 'package:endeavors/screens/splash/bloc/splash_bloc.dart';
 import 'package:endeavors/screens/splash/bloc/splash_event.dart';
 import 'package:endeavors/screens/splash/bloc/splash_state.dart';
@@ -48,7 +50,14 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
       if (state is SplashNavigationToLogin) {
         Navigator.pushReplacementNamed(context, AppRoutes.login);
       } else if (state is SplashNavigateToHome) {
-        Navigator.pushReplacementNamed(context, AppRoutes.main);
+        var isCaseManager = HiveManager.getBool(AppConstants.isCaseManger);
+        if(isCaseManager){
+          Navigator.pushReplacementNamed(context, AppRoutes.main);
+
+        }else{
+          Navigator.pushReplacementNamed(context, AppRoutes.clientMainPage);
+
+        }
       }
     },
       child: Scaffold(

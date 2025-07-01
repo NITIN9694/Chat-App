@@ -38,7 +38,10 @@ class _ClientCalendarPageState extends State<ClientCalendarPage> {
             Column(
               children: [
                 SizedBox(height: 20.h),
-                AppCommonWidgets().commonAppBar(context, 'Calendar'),
+                Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 10.w),
+                  child: AppCommonWidgets().commonAppBar(context, 'Calendar'),
+                ),
                 SizedBox(
                   height: 5.h,
                 ),

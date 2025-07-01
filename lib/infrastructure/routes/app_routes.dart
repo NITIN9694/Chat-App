@@ -8,6 +8,7 @@ import 'package:endeavors/screens/case_manager/job_details/presentation/pages/jo
 import 'package:endeavors/screens/case_manager/main_page/presentation/main_page.dart';
 import 'package:endeavors/screens/case_manager/profile/presentation/pages/profile_page.dart';
 import 'package:endeavors/screens/client/client_calendar/presentation/pages/client_calendar_page.dart';
+import 'package:endeavors/screens/client/client_chat/presentation/page/client_chat_detail_page.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_home/presentation/pages/client_home_page.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_learn/presentation/pages/client_course_learn_page.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_support/presentation/pages/client_support_page.dart';
@@ -56,7 +57,9 @@ class AppPages {
         return SlidePageRoute(page: ClientCourseLearnPage(), direction: SlideDirection.rightToLeft);
       case AppRoutes.clientSupportPage:
         return SlidePageRoute(page: ClientSupportPage(), direction: SlideDirection.rightToLeft);
-      default:
+      case AppRoutes.clientChatDetail:
+        return SlidePageRoute(page: ClientChatDetailPage(), direction: SlideDirection.rightToLeft);
+     default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(child: Text('No route defined for ${settings.name}')),

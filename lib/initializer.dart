@@ -2,8 +2,11 @@
 
 
 import 'package:endeavors/infrastructure/api_service/log.dart';
+import 'package:endeavors/infrastructure/local_storage/pref_manager.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
 
 
@@ -12,6 +15,8 @@ class Initializer {
   static Future<void> init() async {
     try {
       WidgetsFlutterBinding.ensureInitialized();
+      await Hive.initFlutter();
+      await HiveManager.init();
 
       _initLog();
       _initScreenPreference();

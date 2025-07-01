@@ -16,4 +16,6 @@ abstract class AppRoutes {
   static const clientCalendarPage = '/clientCalendarPage';
   static const clientCourseLearn = '/clientCourseLearn';
   static const clientSupportPage = '/clientSupportPage';
+  static const clientChatDetail = '/clientChatDetail';
+
 }

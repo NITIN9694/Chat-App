@@ -15,9 +15,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Future<void>_onLogin(LoginButtonPressed event,Emitter emit)async{
     emit(LoginLoading());
-
-    await Future.delayed(Duration(seconds: 3));
-    emit(LoginSuccess());
+    var email = event.emailId;
+    var pass = event.password;
+    if(email=="nitin@softserv.in"){
+      await Future.delayed(Duration(seconds: 3));
+      emit(ClientLoginSuccess());
+    }else{
+      emit(CaseManagerLoginSuccess());
+    }
 
   }
 }

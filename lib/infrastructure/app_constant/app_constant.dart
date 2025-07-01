@@ -8,6 +8,8 @@ class AppConstants{
   //Prefs
   static const String profession = 'profession';
   static const String loggedIn = 'loggedIn';
+  static const String isCaseManger = 'isCaseManger';
+
   static const String user = 'user';
   static const String loginToken = 'loginToken';
   static const String notificationToken = 'notificationToken';

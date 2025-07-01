@@ -4,6 +4,9 @@ import 'package:endeavors/screens/case_manager/dash_board/case_manager/bloc/case
 import 'package:endeavors/screens/case_manager/main_page/bloc/nav_cubit.dart';
 import 'package:endeavors/screens/case_manager/profile/bloc/profile_bloc.dart';
 import 'package:endeavors/screens/case_manager/profile/data/repo/profile_employement_conditions_repo.dart';
+import 'package:endeavors/screens/client/client_dashboard/client_profile/bloc/client_profile_bloc.dart';
+import 'package:endeavors/screens/client/client_dashboard/client_profile/data/repo/client_repo_profile.dart';
+import 'package:endeavors/screens/client/client_dashboard/client_support/bloc/client_support_bloc.dart';
 import 'package:endeavors/screens/splash/bloc/splash_bloc.dart';
 import 'package:endeavors/initializer.dart';
 import 'package:endeavors/infrastructure/routes/app_pages.dart';
@@ -47,6 +50,8 @@ class MyApp extends StatelessWidget {
               BlocProvider<ProfileBloc>(create: (_) => ProfileBloc(ProfileEmploymentConditionRepo())),
               //Client
               BlocProvider<ClientMainNav>(create: (_) => ClientMainNav()),
+              BlocProvider<ClientSupportBloc>(create: (_) => ClientSupportBloc()),
+              BlocProvider<ClientProfileBloc>(create: (_) => ClientProfileBloc(ClientProfileRepo())),
 
             ],
             child:BaseSafeAreaLayout(
@@ -61,7 +66,7 @@ class MyApp extends StatelessWidget {
                   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                   useMaterial3: true,
                 ),
-                initialRoute: AppRoutes.clientMainPage,
+                initialRoute: AppRoutes.main,
                 onGenerateRoute: AppPages.onGenerateRoute,
               ))
             ) ;

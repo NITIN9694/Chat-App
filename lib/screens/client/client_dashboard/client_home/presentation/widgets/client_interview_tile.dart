@@ -10,6 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class ClientInterviewTile extends StatefulWidget {
   double maxHeight;
   double maxWidth;
+
   ClientInterviewTile(this.maxHeight, this.maxWidth, {super.key});
 
   @override
@@ -50,7 +51,8 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                           children: [
                             Text(
                               "First screening round",
-                              style: mediumTextStyle(color: AppColors.col333, fontSize: 17.sp),
+                              style: mediumTextStyle(
+                                  color: AppColors.col333, fontSize: 17.sp),
                             ),
                             SvgPicture.asset(Assets.svg.contacts),
                           ],
@@ -68,7 +70,8 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                                   color: AppColors.colE2F1FA,
                                 ),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     SvgPicture.asset(
                                       Assets.svg.calendarMonth,
@@ -77,7 +80,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                                     ),
                                     Text(
                                       "TUE | 14 Jan 2025",
-                                      style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
+                                      style: regularTextStyle(
+                                          fontSize: dimen9.sp,
+                                          color: AppColors.col004576),
                                     ),
                                   ],
                                 ),
@@ -104,7 +109,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                                     ),
                                     Text(
                                       "12:00 - 15:30 EST",
-                                      style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
+                                      style: regularTextStyle(
+                                          fontSize: dimen9.sp,
+                                          color: AppColors.col004576),
                                     ),
                                   ],
                                 ),
@@ -140,7 +147,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                               Expanded(
                                 child: Text(
                                   "6363 De Zavala Rd, San Antonio, TX 78249",
-                                  style: regularTextStyle(fontSize: dimen10.sp, color: AppColors.col007FC4),
+                                  style: regularTextStyle(
+                                      fontSize: dimen10.sp,
+                                      color: AppColors.col007FC4),
                                 ),
                               ),
                               SvgPicture.asset(
@@ -208,7 +217,8 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                               height: 5,
                               width: MediaQuery.of(context).size.width * 0.4,
                               decoration: BoxDecoration(
-                                  color: AppColors.colD9D9.withOpacity(0.4), borderRadius: BorderRadius.circular(10.r)),
+                                  color: AppColors.colD9D9.withOpacity(0.4),
+                                  borderRadius: BorderRadius.circular(10.r)),
                             ),
                           ),
                           SizedBox(
@@ -220,7 +230,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                             children: [
                               Text("First screening round",
                                   style: regularTextStyle(
-                                      fontSize: dimen18.sp, color: AppColors.colBlack.withOpacity(0.5))),
+                                      fontSize: dimen18.sp,
+                                      color:
+                                          AppColors.colBlack.withOpacity(0.5))),
                               SvgPicture.asset(
                                 Assets.svg.contacts,
                                 height: 18.h,
@@ -253,7 +265,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                                       ),
                                       Text(
                                         "TUE | 14 Jan 2025",
-                                        style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
+                                        style: regularTextStyle(
+                                            fontSize: dimen9.sp,
+                                            color: AppColors.col004576),
                                       ),
                                     ],
                                   ),
@@ -280,7 +294,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                                       ),
                                       Text(
                                         "12:00 - 15:30 EST",
-                                        style: regularTextStyle(fontSize: dimen9.sp, color: AppColors.col004576),
+                                        style: regularTextStyle(
+                                            fontSize: dimen9.sp,
+                                            color: AppColors.col004576),
                                       ),
                                     ],
                                   ),
@@ -296,7 +312,8 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                               children: [
                                 Text(
                                   "Summary",
-                                  style: semiBoldTextStyle(fontSize: 11.sp, color: AppColors.col6C7),
+                                  style: semiBoldTextStyle(
+                                      fontSize: 11.sp, color: AppColors.col6C7),
                                 ),
                                 Container(
                                   padding: EdgeInsets.all(10.r),
@@ -307,7 +324,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                                   child: Center(
                                       child: Text(
                                     "You have an interview for Data Entry role the session will aim to address brainstorming ideas and responsibilities. The screening process shall determine the further progress.  ",
-                                    style: regularTextStyle(fontSize: 14.sp, color: AppColors.col1A1C1E),
+                                    style: regularTextStyle(
+                                        fontSize: 14.sp,
+                                        color: AppColors.col1A1C1E),
                                   )),
                                 ),
                               ],
@@ -328,7 +347,8 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                           children: [
                             SvgPicture.asset(
                               Assets.svg.apartment,
-                              colorFilter: ColorFilter.mode(AppColors.col007FC4, BlendMode.srcIn),
+                              colorFilter: ColorFilter.mode(
+                                  AppColors.col007FC4, BlendMode.srcIn),
                               height: 23.h,
                               width: 23.w,
                             ),
@@ -338,7 +358,9 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                             Expanded(
                               child: Text(
                                 "Zen Office Inc, Round Rock, Texas",
-                                style: semiBoldTextStyle(fontSize: dimen15.sp, color: AppColors.col007FC4),
+                                style: semiBoldTextStyle(
+                                    fontSize: dimen15.sp,
+                                    color: AppColors.col007FC4),
                               ),
                             ),
                             SvgPicture.asset(
@@ -348,25 +370,32 @@ class _ClientInterviewTileState extends State<ClientInterviewTile> {
                             )
                           ]),
                     ),
-                    Expanded(
-                        child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 35.h),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30.r),
-                          color: AppColors.col007FC4,
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Okay",
-                            style: semiBoldTextStyle(fontSize: dimen14.sp, color: AppColors.colWhite),
+
+                    Spacer(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.w, vertical: 35.h),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                              height: 45.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30.r),
+                            color: AppColors.col007FC4,
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Okay",
+                              style: semiBoldTextStyle(
+                                  fontSize: dimen14.sp,
+                                  color: AppColors.colWhite),
+                            ),
                           ),
                         ),
                       ),
-                    )),
+                    ),
                     SizedBox(
                       height: 2.h,
                     ),

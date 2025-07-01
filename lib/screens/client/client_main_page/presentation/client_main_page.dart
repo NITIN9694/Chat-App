@@ -2,7 +2,9 @@ import 'package:endeavors/gen/assets.gen.dart';
 import 'package:endeavors/screens/case_manager/dash_board/case_manager/presentation/pages/case_manager_page.dart';
 import 'package:endeavors/screens/case_manager/main_page/presentation/widget/custom_bottom_nav_bar.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_home/presentation/pages/client_home_page.dart';
+import 'package:endeavors/screens/client/client_dashboard/client_jobs/presentation/pages/client_job_detail_page.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_learn/presentation/pages/client_course_learn_page.dart';
+import 'package:endeavors/screens/client/client_dashboard/client_profile/presentation/pages/client_profile_pages.dart';
 import 'package:endeavors/screens/client/client_dashboard/client_support/presentation/pages/client_support_page.dart';
 import 'package:endeavors/screens/client/client_main_page/bloc/client_main_nav.dart';
 import 'package:endeavors/screens/side_menu/side_menu.dart';
@@ -28,9 +30,9 @@ class _ClientMainPageState extends State<ClientMainPage> with SingleTickerProvid
   final List<Widget> _screens = [
     ClientHomePage(),
     ClientCourseLearnPage(),
-    Container(),
+    ClientJobDetailPage(),
     ClientSupportPage(),
-    Container(),
+    ClientProfilePages(),
   ];
 
   final List<String> _icons = [
@@ -42,7 +44,7 @@ class _ClientMainPageState extends State<ClientMainPage> with SingleTickerProvid
   ];
 
   final List<String> _labels = [
-    'Clients',
+    'Profile',
     'Learn',
     'Jobs',
     'Support',

@@ -39,6 +39,13 @@ class $AssetsImageGen {
   /// File path: assets/image/male_2.png
   AssetGenImage get male2 => const AssetGenImage('assets/image/male_2.png');
 
+  /// File path: assets/image/support.png
+  AssetGenImage get support => const AssetGenImage('assets/image/support.png');
+
+  /// File path: assets/image/support1.png
+  AssetGenImage get support1 =>
+      const AssetGenImage('assets/image/support1.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     female,
@@ -49,6 +56,8 @@ class $AssetsImageGen {
     loginBg,
     male1,
     male2,
+    support,
+    support1,
   ];
 }
 
@@ -73,6 +82,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/apartment.svg
   String get apartment => 'assets/svg/apartment.svg';
+
+  /// File path: assets/svg/arrow_insert.svg
+  String get arrowInsert => 'assets/svg/arrow_insert.svg';
 
   /// File path: assets/svg/autoplay (1).svg
   String get autoplay1 => 'assets/svg/autoplay (1).svg';
@@ -218,6 +230,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/selected_view_agenda.svg
   String get selectedViewAgenda => 'assets/svg/selected_view_agenda.svg';
 
+  /// File path: assets/svg/send.svg
+  String get send => 'assets/svg/send.svg';
+
   /// File path: assets/svg/terminal.svg
   String get terminal => 'assets/svg/terminal.svg';
 
@@ -241,6 +256,7 @@ class $AssetsSvgGen {
     alarmFill,
     alarmSmartWake,
     apartment,
+    arrowInsert,
     autoplay1,
     badge,
     barcode,
@@ -289,6 +305,7 @@ class $AssetsSvgGen {
     resume,
     search,
     selectedViewAgenda,
+    send,
     terminal,
     unselectedGridView,
     viewAgenda,

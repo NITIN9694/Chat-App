@@ -6,6 +6,8 @@ import 'package:dio/dio.dart';
 import 'package:endeavors/infrastructure/api_service/dioLogger.dart';
 import 'package:endeavors/infrastructure/app_constant/app_constant.dart';
 import 'package:endeavors/infrastructure/local_storage/pref_manager.dart';
+import 'package:endeavors/infrastructure/utils/app_common_widgets.dart';
+import 'package:endeavors/screens/case_manager/chat_detail/data/model/check_user_model.dart';
 
 import 'api_constant.dart';
 
@@ -16,7 +18,11 @@ class ApiProvider {
   DioException? _dioError;
 
   ApiProvider.base() {
-    BaseOptions dioOptions = BaseOptions()..baseUrl = ApiConstant().baseUrl;
+    BaseOptions dioOptions = BaseOptions(
+        connectTimeout: const Duration(seconds: 10),
+        sendTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 15)
+    )..baseUrl = ApiConstant().baseUrl;
     _dio = Dio(dioOptions);
     _dio.interceptors.add(
         InterceptorsWrapper(onRequest: (RequestOptions options, handler) async {
@@ -76,18 +82,20 @@ class ApiProvider {
   Future<T> postApiData<T>(
     String endpoint,
     Map<String, dynamic> params,
-    T Function(dynamic) fromJson,
+      T Function(Map<String, dynamic>) fromJson,
   ) async {
     try {
       var data = json.encode(params);
-      log('POST Params: $data');
-      log('POST Endpoint: $endpoint');
+
+      logWithColor('POST Params: $data', color: '\x1B[36m');
+      logWithColor('POST Endpoint: $endpoint', color: '\x1B[36m'); // Cyan color
+
 
       Response response =
-          await _dio.post(apiEndPoints.baseUrl + endpoint, data: data);
+          await _dio.post(endpoint, data: data);
       return fromJson(response.data);
     } on DioException catch (e) {
-      log('Error: ${e.response?.data ?? e.message}');
+      logWithColor('Error: ${e.response?.data ?? e.message}', color: '\x1B[31m');
       rethrow;
     }
   }
@@ -100,13 +108,14 @@ class ApiProvider {
   ) async {
     try {
       var data = json.encode(params);
-      log('PATCH Params: $data');
-      log('PATCH Endpoint: $endpoint');
+
+      logWithColor('Get Params: $data', color: '\x1B[36m');
+      logWithColor('Get Endpoint: $endpoint', color: '\x1B[36m'); // Cyan color
 
       Response response = await _dio.patch(endpoint, data: data);
       return fromJson(response.data);
     } on DioException catch (e) {
-      log('Error: ${e.response?.data ?? e.message}');
+      logWithColor('Error: ${e.response?.data ?? e.message}', color: '\x1B[31m');
       rethrow;
     }
   }
@@ -127,7 +136,7 @@ class ApiProvider {
       );
       return fromJson(response.data);
     } on DioException catch (e) {
-      log('Error: ${e.response?.data ?? e.message}');
+      logWithColor('Error: ${e.response?.data ?? e.message}', color: '\x1B[31m');
       rethrow;
     }
   }
@@ -137,4 +146,7 @@ class ApiProvider {
     // PrefManager.remove(AppConstants.accessToken);
     // Get.offAllNamed(Routes.authScreen);
   }
+
+
+
 }

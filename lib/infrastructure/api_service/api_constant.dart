@@ -4,24 +4,19 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ApiConstant {
-  var baseUrl ="https://jsonplaceholder.typicode.com/posts";
+  var baseUrl ="https://ynlchatbackend.onrender.com/api";
 
 
- //auth
-  var createUser ="/api/user/createuser";
-  var exGet= "/1";
 
-  var login ="/api/user/login";
-  var profile="/api/user/profile";
 
+
+
+
+//chat constant
+  var checkUser = "/check_user";
+  var addNewUser = "/register/add_new_user";
 
   var tag = 'api_provider';
-
-
-
-
-
-
 
   handleException(error, stacktrace, DioError dioError) {
     debugPrint("Exception occurred: $error stackTrace: $stacktrace");

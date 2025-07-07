@@ -35,3 +35,7 @@ class AppCommonWidgets{
     );
   }
 }
+void logWithColor(String message, {String color = '\x1B[32m'}) {
+  final reset = '\x1B[0m'; // Reset color
+  print('$color$message$reset');
+}

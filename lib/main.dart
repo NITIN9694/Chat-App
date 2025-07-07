@@ -1,5 +1,8 @@
 import 'package:endeavors/infrastructure/utils/base_layout.dart';
 import 'package:endeavors/screens/auth/bloc/login_bloc.dart';
+import 'package:endeavors/screens/case_manager/chat_detail/bloc/case_manager_chat_detail_bloc.dart';
+import 'package:endeavors/screens/case_manager/chat_detail/data/repo/case_manager_chat_detail_repo.dart';
+import 'package:endeavors/screens/case_manager/chat_detail/data/repo/chat_pusher_service.dart';
 import 'package:endeavors/screens/case_manager/dash_board/case_manager/bloc/case_manager_bloc.dart';
 import 'package:endeavors/screens/case_manager/main_page/bloc/nav_cubit.dart';
 import 'package:endeavors/screens/case_manager/profile/bloc/profile_bloc.dart';
@@ -48,6 +51,8 @@ class MyApp extends StatelessWidget {
               BlocProvider<NavCubit>(create: (_) => NavCubit()),
               BlocProvider<CaseManagerBloc>(create: (_)=>CaseManagerBloc(),),
               BlocProvider<ProfileBloc>(create: (_) => ProfileBloc(ProfileEmploymentConditionRepo())),
+              BlocProvider<CaseManagerChatDetailBloc>(create: (_) => CaseManagerChatDetailBloc(CaseManagerChatDetailRepository(),PusherService())),
+
               //Client
               BlocProvider<ClientMainNav>(create: (_) => ClientMainNav()),
               BlocProvider<ClientSupportBloc>(create: (_) => ClientSupportBloc()),

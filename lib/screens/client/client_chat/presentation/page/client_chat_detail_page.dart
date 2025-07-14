@@ -91,7 +91,7 @@ class _ClientChatDetailPageState extends State<ClientChatDetailPage> {
                   SizedBox(height: 20.h),
 
                   /// Chat Bubbles
-                  ChatBubbleList(),
+                  // ChatBubbleList(),
 
                   /// Input bar
                   Container(

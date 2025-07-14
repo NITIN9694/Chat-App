@@ -30,6 +30,9 @@ class $AssetsImageGen {
   AssetGenImage get checkGif =>
       const AssetGenImage('assets/image/check_gif.gif');
 
+  /// File path: assets/image/error.json
+  String get error => 'assets/image/error.json';
+
   /// File path: assets/image/login_bg.png
   AssetGenImage get loginBg => const AssetGenImage('assets/image/login_bg.png');
 
@@ -47,12 +50,13 @@ class $AssetsImageGen {
       const AssetGenImage('assets/image/support1.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
     female,
     appLogo,
     autoplay,
     calendarClock,
     checkGif,
+    error,
     loginBg,
     male1,
     male2,

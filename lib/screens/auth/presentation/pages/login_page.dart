@@ -179,6 +179,8 @@ class _LoginPageState extends State<LoginPage> {
                                   alignment: Alignment.center,
                                   child: GestureDetector(
                                     onTap: () {
+                                      FocusManager.instance.primaryFocus?.unfocus();
+
                                       if (emailController.text.isEmpty &&
                                           passwordController.text.isEmpty) {
                                         return showCustomToast(
@@ -201,6 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                                             .read<LoginBloc>()
                                             .add(LoginButtonPressed(emailController.text,passwordController.text));
                                       }
+
                                     },
                                     child: AnimatedContainer(
                                       duration: Duration(milliseconds: 900),

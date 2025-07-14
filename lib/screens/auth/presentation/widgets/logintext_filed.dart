@@ -57,6 +57,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             padding: const EdgeInsets.all(12.0),
             child: SvgPicture.asset(
               _obscureText?Assets.svg.loginEyesOff:Assets.svg.logEyesOn,
+              height: 12.h,
+              fit: BoxFit.contain,
 
             ),
           ),

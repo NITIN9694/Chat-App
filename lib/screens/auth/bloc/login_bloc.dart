@@ -19,9 +19,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     var pass = event.password;
     if(email=="nitin@softserv.in"){
       await Future.delayed(Duration(seconds: 3));
-      emit(ClientLoginSuccess());
-    }else{
       emit(CaseManagerLoginSuccess());
+    }else{
+      await Future.delayed(Duration(seconds: 3));
+      emit(ClientLoginSuccess());
+
     }
 
   }

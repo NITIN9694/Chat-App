@@ -1,17 +1,41 @@
+import 'package:endeavors/screens/case_manager/chat_detail/data/model/check_user_model.dart';
+import 'package:endeavors/screens/case_manager/chat_detail/data/model/message_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
-class ChatBubbleList extends StatelessWidget {
-  const ChatBubbleList({super.key});
+class ChatBubbleList extends StatefulWidget {
+  final List<UserChatModelMessages> messages;
 
+  const ChatBubbleList({super.key,required this.messages});
+
+  @override
+  State<ChatBubbleList> createState() => _ChatBubbleListState();
+}
+
+class _ChatBubbleListState extends State<ChatBubbleList> {
+  var isSentByMe = false;
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView(
-        children: [
-          // Sent message
-          Align(
-            alignment: Alignment.centerLeft,
+      child: ListView.builder(
+        shrinkWrap: true,
+        reverse: true,
+        itemCount:widget.messages.length,
+        itemBuilder: (context,index){
+          isSentByMe = widget.messages[index].sendBy=="cm001"?true:false;
+          final message = widget.messages[index].message??"";
+          final alignment = isSentByMe ? Alignment.centerLeft : Alignment.centerRight;
+
+          final crossAxisAlignment = isSentByMe ? Alignment.centerRight : Alignment.centerLeft;
+          return   Align(
+            alignment: alignment,
+            child: Column(
+
+              children: [
+
+            Align(
+            alignment:crossAxisAlignment,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -19,48 +43,45 @@ class ChatBubbleList extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 4.h),
                   padding: EdgeInsets.all(12.w),
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: isSentByMe?Colors.blue:Color(0xFFD8D8D8),
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(15.r),
-                      bottomRight: Radius.circular(15.r),
-                      topLeft: Radius.circular(15.r),
+                      bottomRight:isSentByMe ?Radius.zero:Radius.circular(15.r),
+                      bottomLeft:Radius.circular(15.r),
+                      topLeft: isSentByMe?Radius.circular(15.r):Radius.circular(0.r),
+
                     ),
                   ),
-                  child: Text("Hello", style: TextStyle(color: Colors.white)),
+                  child: Text(message, style: TextStyle(color: Colors.white)),
                 ),
-                Text("11:08",
-                    style: TextStyle(fontSize: 10.sp, color: Colors.grey)),
+                // Text(getTime(widget.messages[index].timestamp.toString()??""),
+                //     style: TextStyle(fontSize: 10.sp, color: Colors.grey)),
               ],
             ),
           ),
 
-          // Received message
-          Align(
-            alignment: Alignment.centerRight,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 4.h),
-                  padding: EdgeInsets.all(12.w),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFD8D8D8),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.r),
-                      bottomLeft: Radius.circular(15.r),
-                      topRight: Radius.circular(15.r),
-                    ),
-                  ),
-                  child: Text("Hi there! How can I help?",
-                      style: TextStyle(color: Colors.black)),
-                ),
-                Text("11:11",
-                    style: TextStyle(fontSize: 10.sp, color: Colors.grey)),
+
               ],
             ),
-          ),
-        ],
+          );
+        },
+
       ),
     );
   }
+  getTime(String time){
+
+    // Parse the ISO string to DateTime in UTC
+    DateTime utcTime = DateTime.parse(time);
+
+    // Convert to local time
+    DateTime localTime = utcTime.toLocal();
+
+    // Format the DateTime
+    String formatted = DateFormat("d MMMM y, h:mm a").format(localTime);
+    return formatted;
+  }
+
 }
+
+

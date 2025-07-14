@@ -30,14 +30,12 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   @override
   void initState() {
     _chatBloc=  context.read<CaseManagerChatDetailBloc>()..add(CheckUserEvent(
-        userId: 1234,
-        name: "James Joe",
-        role: "Case Manager / Client",
-        email: "test@gmail.com",
-        phone: "1234567890",
-        password: "123456789"
-    ))
-    ..initializePusher();
+       caseManagerName: "casemanage0",
+      caseMangerId: "casemanage2",
+      clientId: "cl001",
+      clientName:"client0"
+    ));
+    // ..initializePusher("cl001_cm001"  );
     super.initState();
   }
 
@@ -87,6 +85,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             BlocBuilder<CaseManagerChatDetailBloc, CaseManagerChatDetailState>(
                 builder: (context, state) {
               log("State :- $state}");
+              if(state is SendMessageError){
+
+                  }
               if (state is CheckUserLoadingState) {
                 return ChatLoadingShimmer();
               } else if (state is CheckUserErrorState) {
@@ -116,14 +117,13 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                             onTap: () {
                               context
                                   .read<CaseManagerChatDetailBloc>()
-                                  .add(CheckUserEvent(
-                                  userId: 1234,
-                                  name: "James Joe",
-                                  role: "Case Manager / Client",
-                                  email: "test@gmail.com",
-                                  phone: "1234567890",
-                                  password: "123456789"
-                              ));
+                                  .add(
+                                  CheckUserEvent(
+                                      caseManagerName: "casemanage0",
+                                      caseMangerId: "casemanage2",
+                                      clientId: "client2",
+                                      clientName:"client0"
+                                  ));
                             },
                             child: Container(
                               padding: EdgeInsets.all(10.r),
@@ -146,6 +146,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       )),
                 );
               } else if (state is CheckUserLoadedState) {
+
                 return Expanded(
                   child: Container(
                     padding: EdgeInsets.all(16.w),
@@ -231,7 +232,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                         SizedBox(height: 20.h),
 
                         /// Chat Bubbles
-                        ChatBubbleList(),
+                        ChatBubbleList(messages:state.message??[]),
 
                         /// Input bar
                         Container(
@@ -250,7 +251,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                   controller: _chatController,
                                   style: regularTextStyle(
                                     fontSize: dimen14.sp,
-                                    color: AppColors.colPrimary, // Text color
+                                    color: AppColors.col232323, // Text color
                                   ),
                                   decoration: InputDecoration(
                                     hintText: "Tell us what happened . . .",
@@ -262,9 +263,23 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                   ),
                                 ),
                               ),
-                              Icon(
-                                Icons.send,
-                                color: AppColors.colBlack,
+                              GestureDetector(
+                                onTap:(){
+                                  context
+                                      .read<CaseManagerChatDetailBloc>()
+                                      .add(
+                                      SendMessageEvent(
+                                        sendBy: "cm001",
+                                        senderId: "cm001",
+                                        receiverId: "cl001",
+                                        message: _chatController.text
+                                      ));
+                                  _chatController.clear();
+                                },
+                                child: Icon(
+                                  Icons.send,
+                                  color: AppColors.colBlack,
+                                ),
                               )
                             ],
                           ),

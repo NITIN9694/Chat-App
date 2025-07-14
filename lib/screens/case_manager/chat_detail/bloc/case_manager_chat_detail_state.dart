@@ -9,7 +9,6 @@ class ChatInitial extends CaseManagerChatDetailState {}
 
 class ChatLoading extends CaseManagerChatDetailState {}
 
-class ChatLoaded extends CaseManagerChatDetailState {}
 
 class ChatError extends CaseManagerChatDetailState {}
 
@@ -28,9 +27,9 @@ class CheckUserErrorState extends CaseManagerChatDetailState {
 }
 
 class CheckUserLoadedState extends CaseManagerChatDetailState {
-  final CheckUserModel? checkUserModel;
+  final  List<UserChatModelMessages>? message;
 
-  CheckUserLoadedState({this.checkUserModel});
+  CheckUserLoadedState({this.message});
 }
 
 
@@ -54,8 +53,15 @@ class CaseManagerUserOnlineState extends CaseManagerChatDetailState {
   CaseManagerUserOnlineState({required this.isUserOnline});
 }
 
+class SendMessageLoading extends CaseManagerChatDetailState{
 
-class ChatUpdatedState extends CaseManagerChatDetailState {
-  final List<CaseManagerChatMessageModel> messages;
-  ChatUpdatedState(this.messages);
+}
+class SendMessageLoaded extends CaseManagerChatDetailState{
+final UserChatModelMessages? userChatModelMessages;
+SendMessageLoaded({this.userChatModelMessages});
+}
+
+class SendMessageError extends CaseManagerChatDetailState{
+String message;
+SendMessageError({required this.message});
 }

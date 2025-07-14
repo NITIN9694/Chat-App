@@ -14,7 +14,7 @@ class CustomBottomNavBar extends StatelessWidget {
 
   final List<String> labels;
 
-  const CustomBottomNavBar({
+  const CustomBottomNavBar({super.key,
     required this.selectedIndex,
     required this.onTap,
     required this.icons,

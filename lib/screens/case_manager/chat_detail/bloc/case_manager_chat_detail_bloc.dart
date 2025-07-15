@@ -18,47 +18,75 @@ part 'case_manager_chat_detail_state.dart';
 
 class CaseManagerChatDetailBloc
     extends Bloc<CaseManagerChatDetailEvent, CaseManagerChatDetailState> {
-    final CaseManagerChatDetailRepository caseManagerChatDetailRepository;
-    final PusherService pusherService;
-    final MessageModel  messageModelData = MessageModel();
-    List<UserChatModelMessages>? message;
+  final CaseManagerChatDetailRepository caseManagerChatDetailRepository;
+  PusherService? pusherService;
+  final MessageModel messageModelData = MessageModel();
+  List<UserChatModelMessages>? message;
+
   CaseManagerChatDetailBloc(
       this.caseManagerChatDetailRepository, this.pusherService)
       : super(CaseManagerChatDetailInitial()) {
+    pusherService?.bloc = this;
     on<CheckUserEvent>(_checkUserApiFun);
 
     on<SendMessageEvent>(_onSendMessage);
+    on<ReceiveMessageEvent>((event, emit) {
+      emit(CheckUserLoadedState(message: event.messages));
+    });
 
+    on<UserOnlineEvent>((event, emit) {
+      emit(CheckUserLoadedState(
+        message: message ?? [],
+        isUserOnline: true,
+        isUserTyping: false,
+      ));
+    });
+
+    on<UserOfflineEvent>((event, emit) {
+      emit(CheckUserLoadedState(
+        message: message ?? [],
+        isUserOnline: false,
+        isUserTyping: false,
+      ));
+    });
+
+    on<TypingUserEvent>((event, emit) async {
+      emit(CheckUserLoadedState(
+        message: message ?? [],
+        isUserOnline: true,
+        isUserTyping: event.isTyping,
+      ));
+
+      // Auto-remove typing after 3 seconds
+      await Future.delayed(Duration(seconds: 5));
+      emit(CheckUserLoadedState(
+        message: message ?? [],
+        isUserOnline: true,
+        isUserTyping: false,
+      ));
+    });
   }
 
-   void _addNewUserApiFunc(  AddNewUserEvent event, Emitter<CaseManagerChatDetailState> emit)async{
-     emit(CheckUserLoadingState());
-     final addNewUser = await caseManagerChatDetailRepository.addNewUser(event.userId,
-         event.name, event.role, event.email, event.phone, event.password);
-     if (addNewUser != null) {
-       emit(AddNewUserAddedState(addNewUserModel: addNewUser));
-     } else {
-       emit(CheckUserErrorState(message: "Something went wrong"));
-     }
-   }
-
-
-   void _checkUserApiFun(
+  void _checkUserApiFun(
       CheckUserEvent event, Emitter<CaseManagerChatDetailState> emit) async {
     emit(CheckUserLoadingState());
-    CheckUserModel? checkUserModel = await caseManagerChatDetailRepository.postCheckUserApi(event.caseMangerId,event.caseManagerName,event.clientId,event.clientName);
-
-
+    CheckUserModel? checkUserModel =
+        await caseManagerChatDetailRepository.postCheckUserApi(
+            event.caseMangerId,
+            event.caseManagerName,
+            event.clientId,
+            event.clientName);
     if (checkUserModel != null) {
-
-        CreateRoomModel? createRoomModel = await caseManagerChatDetailRepository.createRoomID(event.caseMangerId,event.clientId);
-        if(createRoomModel !=null){
-          UserChatModel? userChatModel = await caseManagerChatDetailRepository.getChats("cl001_cm001", 1, 10);
-          if(userChatModel !=null){
-            message = userChatModel.messages??[];
-          }
-
-         }
+      CreateRoomModel? createRoomModel = await caseManagerChatDetailRepository
+          .createRoomID(event.caseMangerId, event.clientId);
+      if (createRoomModel != null) {
+        UserChatModel? userChatModel = await caseManagerChatDetailRepository
+            .getChats("cl001_cm001", 1, 10);
+        pusherService?.init("cl001_cm001", "cm001", "cl001");
+        if (userChatModel != null) {
+          message = userChatModel.messages ?? [];
+        }
+      }
 
       emit(CheckUserLoadedState(message: message));
     } else {
@@ -66,48 +94,37 @@ class CaseManagerChatDetailBloc
     }
   }
 
-  _onUserTyping(UserTyping event, Emitter<CaseManagerChatDetailState> emit) {
-    emit(CaseManagerUserTypingState(isUserTyping: event.isTyping!));
-  }
-
-  _onOnlineUser(OnlineUser event,Emitter<CaseManagerChatDetailState>emit){
-    emit(CaseManagerUserOnlineState(isUserOnline: event.isOnline!));
-  }
-
-
-
-
   Future<void> initializePusher(String roomId) async {
-    await pusherService.init(roomId);
+    await pusherService?.init("cl001_cm001", "cm001", "cl001");
   }
 
-  Future<void>disConnect()async{
-    await pusherService.disConnectPusher();
+  Future<void> disConnect() async {
+    await pusherService?.disConnectPusher();
   }
 
+  void _onSendMessage(
+      SendMessageEvent event, Emitter<CaseManagerChatDetailState> emit) async {
+    // emit(SendMessageLoading());
+    SendMessageModel? userChatModelMessages =
+        await caseManagerChatDetailRepository.sendMessageApi(
+            event.senderId, event.receiverId, event.message, event.sendBy);
+    if (userChatModelMessages != null) {
+      final updatedMessages = [
+        ...?message,
+        UserChatModelMessages(
+          message: userChatModelMessages.messages?.last.message,
+          senderId: userChatModelMessages.messages?.last.senderId,
+          receiverId: userChatModelMessages.messages?.last.receiverId,
+          sendBy: userChatModelMessages.messages?.last.sendBy,
+          status: userChatModelMessages.messages?.last.status,
+          sId: userChatModelMessages.messages?.last.sId,
+          timestamp: userChatModelMessages.messages?.last.timestamp,
+        )
+      ];
 
-
-  void _onSendMessage(SendMessageEvent event, Emitter<CaseManagerChatDetailState> emit) async{
-  // emit(SendMessageLoading());
-    SendMessageModel? userChatModelMessages = await caseManagerChatDetailRepository.sendMessageApi(event.senderId, event.receiverId, event.message, event.sendBy);
-  if(userChatModelMessages !=null){
-
-    final updatedMessages = [...?message, UserChatModelMessages(
-      message: userChatModelMessages.messages?.last.message,
-      senderId: userChatModelMessages.messages?.last.senderId,
-      receiverId: userChatModelMessages.messages?.last.receiverId,
-      sendBy: userChatModelMessages.messages?.last.sendBy,
-      status: userChatModelMessages.messages?.last.status,
-      sId: userChatModelMessages.messages?.last.sId,
-      timestamp: userChatModelMessages.messages?.last.timestamp,
-
-
-    )];
-
-    emit(CheckUserLoadedState(message:updatedMessages));
-  }else{
-   emit(  SendMessageError(message: "Something went wrong"));
-   }
-
+      emit(CheckUserLoadedState(message: updatedMessages));
+    } else {
+      emit(SendMessageError(message: "Something went wrong"));
+    }
   }
 }

@@ -28,8 +28,10 @@ class CheckUserErrorState extends CaseManagerChatDetailState {
 
 class CheckUserLoadedState extends CaseManagerChatDetailState {
   final  List<UserChatModelMessages>? message;
+  final bool? isUserOnline;
+  final bool?isUserTyping;
 
-  CheckUserLoadedState({this.message});
+  CheckUserLoadedState({this.message,this.isUserTyping,this.isUserOnline});
 }
 
 
@@ -52,6 +54,7 @@ class CaseManagerUserOnlineState extends CaseManagerChatDetailState {
 
   CaseManagerUserOnlineState({required this.isUserOnline});
 }
+
 
 class SendMessageLoading extends CaseManagerChatDetailState{
 

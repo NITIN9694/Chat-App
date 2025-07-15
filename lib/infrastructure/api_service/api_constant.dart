@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ApiConstant {
-  var baseUrl ="https://377fea3a5a52.ngrok-free.app";
+  var baseUrl ="https://cded0513a8b5.ngrok-free.app";
 
 
 

@@ -18,21 +18,16 @@ class UserTyping extends CaseManagerChatDetailEvent {
 }
 
 class ReceiveMessageEvent extends CaseManagerChatDetailEvent {
-
+  final List<UserChatModelMessages> messages;
+  ReceiveMessageEvent({required this.messages});
 
 }
 
-class MsgRead extends CaseManagerChatDetailEvent {}
 
-class OnlineUser extends CaseManagerChatDetailEvent {
-  final bool? isOnline;
 
-  OnlineUser({this.isOnline});
-}
 
-class ReportUser extends CaseManagerChatDetailEvent {}
 
-class GetUnreadMsg extends CaseManagerChatDetailEvent {}
+
 
 class AddNewUserEvent extends CaseManagerChatDetailEvent {
   final int userId;
@@ -73,14 +68,8 @@ class CheckUserEvent extends CaseManagerChatDetailEvent {
 
 
 
-class NewMessageReceived extends CaseManagerChatDetailEvent {
-  final MessagesModel message;
-  NewMessageReceived(this.message);
-}
-class TypingEvent extends CaseManagerChatDetailEvent {
-  final String userId;
-  TypingEvent(this.userId);
-}
+
+
 class SendMessageEvent extends CaseManagerChatDetailEvent {
   final String senderId;
   final String receiverId;
@@ -90,15 +79,17 @@ class SendMessageEvent extends CaseManagerChatDetailEvent {
 }
 
 class UserOnlineEvent extends CaseManagerChatDetailEvent {
-  final String userId;
-  UserOnlineEvent(this.userId);
+  final bool isOnline;
+  UserOnlineEvent(this.isOnline);
 }
 class UserOfflineEvent extends CaseManagerChatDetailEvent {
-  final String userId;
-  UserOfflineEvent(this.userId);
+  final bool isOffline;
+  UserOfflineEvent(this.isOffline);
 }
 
 
+class TypingUserEvent extends CaseManagerChatDetailEvent {
+  final bool? isTyping;
 
-
-
+  TypingUserEvent({this.isTyping});
+}

@@ -177,6 +177,10 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                       style: regularTextStyle(
                                           fontSize: 8.sp,
                                           color: AppColors.col007FC4)),
+                                  Text((state.isUserOnline??false)?"Online":"Offline",
+                                      style: mediumTextStyle(
+                                          fontSize: 10.sp,
+                                          color:(state.isUserOnline??false)?AppColors.col21B43: AppColors.colF26806)),
                                 ],
                               ),
                             ),
@@ -232,7 +236,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                         SizedBox(height: 20.h),
 
                         /// Chat Bubbles
-                        ChatBubbleList(messages:state.message??[]),
+                        ChatBubbleList(messages:state.message??[],isTyping: state.isUserTyping??false,),
 
                         /// Input bar
                         Container(

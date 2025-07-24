@@ -1,28 +1,33 @@
+
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:endeavors/infrastructure/api_service/api_constant.dart';
 import 'package:endeavors/infrastructure/api_service/api_provider.dart';
+import 'package:endeavors/infrastructure/utils/app_toast.dart';
 import 'package:endeavors/screens/case_manager/chat_detail/data/model/add_new_user_model.dart';
 import 'package:endeavors/screens/case_manager/chat_detail/data/model/get_chat_model.dart';
 import 'package:endeavors/screens/case_manager/chat_detail/data/model/check_user_model.dart';
 import 'package:endeavors/screens/case_manager/chat_detail/data/model/pusher_trigger_model.dart';
 import 'package:endeavors/screens/case_manager/chat_detail/data/model/send_message_model.dart';
 
-class CaseManagerChatDetailRepository {
+class ClientChatDetailRepository {
 
 
-   Future<CheckUserModel?>checkUserApi(String caseManagerID,String caseManagerName,String clientId,String clientName)async{
+  //node api
+
+
+  Future<CheckUserModel?>postCheckUserApi(String caseManagerID,String caseManagerName,String clientId,String clientName)async{
     try{
       Map<String,dynamic> params = {
-        "caseManagerId":caseManagerID ,
+        "caseMangerId":caseManagerID ,
         "caseManagerName": caseManagerName,
         "clientId": clientId,
         "clientName": clientName
       };
 
       CheckUserModel checkUserModel =
-          await ApiProvider.baseWithToken().postApiData(ApiConstant().checkUser, params,CheckUserModel.fromJson);
+      await ApiProvider.baseWithToken().postApiData(ApiConstant().checkUser, params,CheckUserModel.fromJson);
 
       return checkUserModel;
     } on HttpException catch (e) {
@@ -31,14 +36,13 @@ class CaseManagerChatDetailRepository {
       log("Error:- $e");
     }
     return null;
-   }
+  }
 
-
-   Future<CreateRoomModel?>createRoomID(String caseManagerID,String clientId,)async{
+  Future<CreateRoomModel?>createRoomID(String caseManagerID,String clientId,)async{
     try{
       Map<String,dynamic> params = {
         "clientId":clientId ,
-        "caseManagerId": caseManagerID,
+        "caseMangerId": caseManagerID,
 
       };
 
@@ -46,6 +50,25 @@ class CaseManagerChatDetailRepository {
       await ApiProvider.baseWithToken().postApiData(ApiConstant().createRoom, params,CreateRoomModel.fromJson);
 
       return createRoomModel;
+    } on HttpException catch (e) {
+      log("HttpException:- $e");
+    } catch (e) {
+      log("Error:- $e");
+    }
+    return null;
+  }
+
+  Future<MessagesModel?>getChats(String roomId,int page,int limit,)async{
+    try{
+      Map<String,dynamic> params = {
+
+
+      };
+
+      MessagesModel chatModel =
+      await ApiProvider.baseWithToken().getApiFormData("${ApiConstant().getChat}roomId=$roomId&page=$page&limit=$limit", params,MessagesModel.fromJson);
+
+      return chatModel;
     } on HttpException catch (e) {
       log("HttpException:- $e");
     } catch (e) {
@@ -80,11 +103,13 @@ class CaseManagerChatDetailRepository {
 
 
 
-  Future<GetChatModel?> getChatMessageApi(String roomID,int pageNo,int pageSize) async {
+  Future<GetChatModel?> getChatMessageApi(String caseManagerId,int pageNo,int pageSize) async {
     try {
+      Map<String,dynamic> params = {
+      };
 
       GetChatModel messageModel =
-      await ApiProvider.baseWithToken().getApiData("/get_chat?roomId=$roomID&page=4&limit=$pageSize",GetChatModel.fromJson);
+      await ApiProvider.baseWithToken().postApiData("${ApiConstant().getChat}?roomId=$caseManagerId&page=$pageNo&limit=$pageSize", params,GetChatModel.fromJson);
 
       return messageModel;
     } on HttpException catch (e) {
@@ -94,6 +119,7 @@ class CaseManagerChatDetailRepository {
     }
     return null;
   }
+
 
 
   Future<PusherTriggerModel?> triggerTyping(String roomId, String userId)async{
@@ -122,7 +148,7 @@ class CaseManagerChatDetailRepository {
     } catch (e) {
       log("Error:- $e");
     }
-   return null;
+    return null;
   }
 
 

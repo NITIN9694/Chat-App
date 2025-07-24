@@ -18,7 +18,7 @@ class UserTyping extends CaseManagerChatDetailEvent {
 }
 
 class ReceiveMessageEvent extends CaseManagerChatDetailEvent {
-  final List<UserChatModelMessages> messages;
+  final List<MessagesModel> messages;
   ReceiveMessageEvent({required this.messages});
 
 }
@@ -75,7 +75,8 @@ class SendMessageEvent extends CaseManagerChatDetailEvent {
   final String receiverId;
   final String message;
   final String sendBy;
-  SendMessageEvent({required this.sendBy,required this.senderId,required this.receiverId,required this.message});
+  final String roomId;
+  SendMessageEvent({required this.sendBy,required this.senderId,required this.receiverId,required this.message,required this.roomId});
 }
 
 class UserOnlineEvent extends CaseManagerChatDetailEvent {
@@ -88,6 +89,18 @@ class UserOfflineEvent extends CaseManagerChatDetailEvent {
 }
 
 
+class UserTypingEventAPI extends CaseManagerChatDetailEvent{
+ final String? roomID;
+ final String ?clientId;
+  UserTypingEventAPI({this.roomID,this.clientId});
+}
+
+class UserOnlineEventApi extends CaseManagerChatDetailEvent{
+  final String ?userID;
+  final String ?roomID;
+  final String ? status;
+  UserOnlineEventApi({this.roomID,this.status,this.userID});
+}
 class TypingUserEvent extends CaseManagerChatDetailEvent {
   final bool? isTyping;
 

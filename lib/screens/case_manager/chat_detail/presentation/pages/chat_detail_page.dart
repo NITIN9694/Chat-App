@@ -30,20 +30,27 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   @override
   void initState() {
     _chatBloc=  context.read<CaseManagerChatDetailBloc>()..add(CheckUserEvent(
-       caseManagerName: "casemanage0",
-      caseMangerId: "casemanage2",
-      clientId: "cl001",
-      clientName:"client0"
+       caseManagerName: "casemanager",
+      caseMangerId: "casemanager",
+      clientId: "client12",
+      clientName:"client12"
     ));
-    // ..initializePusher("cl001_cm001"  );
+
     super.initState();
+
+
   }
 
   @override
   void dispose() {
     _chatBloc.disConnect();
+
     super.dispose();
   }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -119,10 +126,10 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                   .read<CaseManagerChatDetailBloc>()
                                   .add(
                                   CheckUserEvent(
-                                      caseManagerName: "casemanage0",
-                                      caseMangerId: "casemanage2",
-                                      clientId: "client2",
-                                      clientName:"client0"
+                                      caseManagerName: "casemanager",
+                                      caseMangerId: "casemanager",
+                                      clientId: "client12",
+                                      clientName:"client12"
                                   ));
                             },
                             child: Container(
@@ -146,7 +153,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       )),
                 );
               } else if (state is CheckUserLoadedState) {
-
                 return Expanded(
                   child: Container(
                     padding: EdgeInsets.all(16.w),
@@ -236,9 +242,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                         SizedBox(height: 20.h),
 
                         /// Chat Bubbles
-                        ChatBubbleList(messages:state.message??[],isTyping: state.isUserTyping??false,),
+                        ChatBubbleList(messages:state.message??[],isTyping: state.isUserTyping??false,
 
-                        /// Input bar
+                          chatTextFiled:       /// Input bar
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 25.w, vertical: 5.h),
@@ -257,6 +263,12 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                     fontSize: dimen14.sp,
                                     color: AppColors.col232323, // Text color
                                   ),
+                                  onChanged: (value){
+                                    context.read<CaseManagerChatDetailBloc>()
+                                        .add(
+                                      UserTypingEventAPI(roomID: "client12_casemanager",clientId:"casemanager")
+                                    );
+                                  },
                                   decoration: InputDecoration(
                                     hintText: "Tell us what happened . . .",
                                     hintStyle: lightTextStyle(
@@ -273,10 +285,11 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                       .read<CaseManagerChatDetailBloc>()
                                       .add(
                                       SendMessageEvent(
-                                        sendBy: "cm001",
-                                        senderId: "cm001",
-                                        receiverId: "cl001",
-                                        message: _chatController.text
+                                          sendBy: "casemanager",
+                                          senderId: "casemanager",
+                                          receiverId: "client12",
+                                          message: _chatController.text,
+                                        roomId: "client12_casemanager"
                                       ));
                                   _chatController.clear();
                                 },
@@ -288,6 +301,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                             ],
                           ),
                         ),
+                        ),
+
+
 
                         SizedBox(height: 10.h),
 

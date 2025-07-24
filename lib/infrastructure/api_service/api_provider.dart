@@ -66,7 +66,7 @@ class ApiProvider {
 // Generic Get Api Function
   Future<T> getApiData<T>(
     String endpoint,
-    T Function(dynamic) fromJson,
+      T Function(Map<String, dynamic>) fromJson,
   ) async {
     try {
       log("endpoint ${endpoint}");

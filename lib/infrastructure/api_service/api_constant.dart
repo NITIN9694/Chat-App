@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ApiConstant {
-  var baseUrl ="https://cded0513a8b5.ngrok-free.app";
+  var baseUrl ="https://ynlchatbackend.onrender.com/api";
 
 
 
@@ -15,13 +15,21 @@ class ApiConstant {
 //chat constant
   var checkUser = "/register/check_user";
   var addNewUser = "/register/add_new_user";
+  var createRoom = "/register/create-room";
+  var getClients = "/get_clients";
   var getChat = "/get_chat";
+  var sendNewMessage = "/send_new_msg";
 
-  //node const
-  var nodeCheckUser = "/api/chat/assign-client";
-  var nodeCreateUser = "/api/chat/create-room";
-  var nodeGetChat = "/api/chat/get-chat-paginated?";
-  var nodeSendMessage = "/api/chat/send";
+//pusher api constant
+ var  userTyping = "/user_typing";
+ var msgRead = "/msg_read";
+ var onlineUser = "/online_user";
+ var changeCaseManager = "/change_case_manager";
+ var reportUser ="/report_user";
+ var getUnreadMsg = "/get_unread_msg";
+
+
+
 
 
 

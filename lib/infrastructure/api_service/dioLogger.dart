@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:endeavors/infrastructure/utils/app_common_widgets.dart';
 
 import 'log.dart';
 
@@ -12,15 +13,15 @@ class DioLogger{
     Log.info('$tag - Request Data : ${options.data.toString()}');
   }
   static void onSuccess(String tag, Response response){
-    Log.info('$tag - Response Path : [${response.requestOptions.method}] ${response.requestOptions.baseUrl}${response.requestOptions.path} Request Data : ${response.requestOptions.data.toString()}');
-    Log.info('$tag - Response statusCode : ${response.statusCode}');
-    Log.info('$tag - Response data : ${response.data.toString()}');
+    logWithColor('$tag - Response Path : [${response.requestOptions.method}] ${response.requestOptions.baseUrl}${response.requestOptions.path} Request Data : ${response.requestOptions.data.toString()}',color: '\x1B[36m');
+    logWithColor('$tag - Response statusCode : ${response.statusCode}',color: '\x1B[36m');
+    logWithColor('$tag - Response data : ${response.data.toString()}',color: '\x1B[36m');
   }
   static void onError(String tag, DioError error){
     if(null != error.response){
-      Log.info('$tag - Error Path : [${error.requestOptions.method}] ${error.requestOptions.baseUrl}${error.requestOptions.path} Request Data : ${error.requestOptions.data.toString()}');
-      Log.info('$tag - Error data : ${null != error.requestOptions.data ? error.requestOptions.data.toString() : ''}');
+    logWithColor('$tag - Error Path : [${error.requestOptions.method}] ${error.requestOptions.baseUrl}${error.requestOptions.path} Request Data : ${error.requestOptions.data.toString()}', color: '\x1B[31m');
+      logWithColor('$tag - Error data : ${null != error.requestOptions.data ? error.requestOptions.data.toString() : ''}', color: '\x1B[31m');
     }
-    Log.info('$tag - Error Message : ${error.message}');
+    logWithColor('$tag - Error Message : ${error.message}', color: '\x1B[31m');
   }
 }

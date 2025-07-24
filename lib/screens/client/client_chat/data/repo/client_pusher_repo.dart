@@ -3,18 +3,17 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:endeavors/infrastructure/utils/app_common_widgets.dart';
-import 'package:endeavors/screens/case_manager/chat_detail/bloc/case_manager_chat_detail_bloc.dart';
 import 'package:endeavors/screens/case_manager/chat_detail/data/model/get_chat_model.dart';
-import 'package:endeavors/screens/case_manager/chat_detail/data/model/receive_chat_model.dart';
-import 'package:endeavors/screens/case_manager/chat_detail/data/repo/case_manager_chat_detail_repo.dart';
+
+import 'package:endeavors/screens/client/client_chat/bloc/client_chat_bloc.dart';
 import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 
-class PusherService {
-   PusherChannelsFlutter? pusher;
-    CaseManagerChatDetailBloc ?bloc;
+class ClientPusherService {
+  PusherChannelsFlutter? pusher;
+  ClientChatBloc ?bloc;
 
 
-  Future<void> init(String roomId,String caseManagerId,String clientID,String roomID) async {
+  Future<void> init(String roomId,String caseManagerId,String clientID) async {
     pusher = PusherChannelsFlutter.getInstance();
     await pusher?.init(
       apiKey: "d0b815acacfb926c5dd7",
@@ -32,39 +31,39 @@ class PusherService {
 
         if (event.eventName == 'chat-event') {
           // Extract actual message model from it
-          bloc?.add(UserOnlineEvent(true));
+          bloc?.add(ClientUserOnlineEvent(true));
           final newMessage = MessagesModel.fromJson(data);
           logWithColor("newMessage ${newMessage.sendBy}");
           if(newMessage.senderId =="client12"){
-            final currentMessages = bloc?.state is CheckUserLoadedState
-                ? ( bloc?.state as CheckUserLoadedState).message as List<MessagesModel>
+            final currentMessages = bloc?.state is CheckClientUserLoadedState
+                ? ( bloc?.state as CheckClientUserLoadedState).message as List<MessagesModel>
                 : <MessagesModel>[];
 
-              final updatedMessages = [
+            final updatedMessages = [
 
-                MessagesModel(
-                  msg: newMessage.msg,
-                  senderId: newMessage.senderId,
-                  receiverId: newMessage.receiverId,
-                  sendBy: newMessage.sendBy,
-                  status: newMessage.status,
-                  id: newMessage.id,
-                  dateTime: newMessage.dateTime,
-                ),
-                ...currentMessages,
-              ];
+              MessagesModel(
+                msg: newMessage.msg,
+                senderId: newMessage.senderId,
+                receiverId: newMessage.receiverId,
+                sendBy: newMessage.sendBy,
+                status: newMessage.status,
+                id: newMessage.id,
+                dateTime: newMessage.dateTime,
+              ),
+              ...currentMessages,
+            ];
 
-              // Emit updated state
-            bloc?.add(ReceiveMessageEvent(messages: updatedMessages));
+            // Emit updated state
+            bloc?.add(ClientReceiveMessageEvent(messages: updatedMessages));
           }
 
         } else if (event.eventName == 'chat-typing') {
-          bloc?.add(TypingUserEvent(isTyping: true));
+          bloc?.add(ClientTypingUserEvent(isTyping: true));
           // bloc?.add(UserOnlineEvent(true));
         } else if (event.eventName == 'user-status') {
-          bloc?.add(UserOnlineEvent(true));
+          bloc?.add(ClientUserOnlineEvent(true));
         } else if (event.eventName == 'user_offline') {
-          bloc?.add(UserOfflineEvent(true));
+          bloc?.add(ClientUserOfflineEvent(true));
         }
       },
     );
@@ -88,6 +87,8 @@ class PusherService {
 
 
   }
+
+
 
 
 

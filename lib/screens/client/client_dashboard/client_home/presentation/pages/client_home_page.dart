@@ -287,11 +287,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             _navIcon(() {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(builder: (_) => MainPage(initialIndex: 2)),
-                                (route) => false,
-                              );
+                              Navigator.pushNamed(context, AppRoutes.clientChatDetail);
                             }, Assets.svg.docChatJob),
                             SvgPicture.asset(Assets.svg.callIconJob),
                             SizedBox(width: 1.w),

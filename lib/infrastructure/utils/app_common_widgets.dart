@@ -1,7 +1,7 @@
 
-import 'package:endeavors/styles/colors.dart';
-import 'package:endeavors/styles/sizes.dart';
-import 'package:endeavors/styles/styles.dart';
+import 'package:chat/styles/colors.dart';
+import 'package:chat/styles/sizes.dart';
+import 'package:chat/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

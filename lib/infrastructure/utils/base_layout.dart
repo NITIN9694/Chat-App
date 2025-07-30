@@ -1,4 +1,4 @@
-import 'package:endeavors/styles/colors.dart';
+import 'package:chat/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class BaseSafeAreaLayout extends StatelessWidget {

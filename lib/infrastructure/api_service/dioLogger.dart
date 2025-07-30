@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:endeavors/infrastructure/utils/app_common_widgets.dart';
+import 'package:chat/infrastructure/utils/app_common_widgets.dart';
 
 import 'log.dart';
 

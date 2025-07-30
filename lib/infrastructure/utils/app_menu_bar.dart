@@ -1,5 +1,5 @@
-import 'package:endeavors/gen/assets.gen.dart';
-import 'package:endeavors/styles/colors.dart';
+import 'package:chat/gen/assets.gen.dart';
+import 'package:chat/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

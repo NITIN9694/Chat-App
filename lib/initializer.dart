@@ -1,8 +1,8 @@
 
 
 
-import 'package:endeavors/infrastructure/api_service/log.dart';
-import 'package:endeavors/infrastructure/local_storage/pref_manager.dart';
+import 'package:chat/infrastructure/api_service/log.dart';
+import 'package:chat/infrastructure/local_storage/pref_manager.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';

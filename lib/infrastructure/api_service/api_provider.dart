@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:endeavors/infrastructure/api_service/dioLogger.dart';
-import 'package:endeavors/infrastructure/app_constant/app_constant.dart';
-import 'package:endeavors/infrastructure/local_storage/pref_manager.dart';
-import 'package:endeavors/infrastructure/utils/app_common_widgets.dart';
-import 'package:endeavors/screens/case_manager/chat_detail/data/model/check_user_model.dart';
+import 'package:chat/infrastructure/api_service/dioLogger.dart';
+import 'package:chat/infrastructure/app_constant/app_constant.dart';
+import 'package:chat/infrastructure/local_storage/pref_manager.dart';
+import 'package:chat/infrastructure/utils/app_common_widgets.dart';
+import 'package:chat/screens/chat_detail/data/model/check_user_model.dart';
 
 import 'api_constant.dart';
 

@@ -1,16 +1,37 @@
-# chat
+# Full Stack Chat Application
 
-A new Flutter project.
+A real-time chat application built with **Node.js** for the backend, **Flutter** for the frontend, and **Pusher** for real-time messaging.
+
+---
+
+## Features
+![Uploading Screenshot_20250730_203918.png…]()
+
+- Real-time messaging powered by Pusher
+- User-friendly Flutter UI for mobile devices
+- Node.js backend with REST API and WebSocket support
+- Supports multiple chat rooms and private messaging (optional)
+- Easy to set up and customize
+
+---
+
+## Technologies Used
+
+- **Backend:** Node.js, Express.js
+- **Frontend:** Flutter (Dart)
+- **Real-time Messaging:** Pusher Channels
+- **Database:** (Your choice - e.g., MongoDB, Firebase, etc.)
+- **Version Control:** Git & GitHub
+
+---
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Node.js (v14+ recommended)
+- Flutter SDK installed
+- Pusher account (https://pusher.com)
+- (Optional) Database setup (MongoDB, Firebase, etc.)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---

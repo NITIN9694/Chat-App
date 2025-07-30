@@ -5,7 +5,7 @@ A real-time chat application built with **Node.js** for the backend, **Flutter**
 ---
 
 ## Features
-<img width="1080" height="2400" alt="Screenshot_20250730_203918" src="https://github.com/user-attachments/assets/75941292-5bf7-428b-a5cb-ef05946d9a37" />
+<img width="200" height="400" alt="Screenshot_20250730_203918" src="https://github.com/user-attachments/assets/75941292-5bf7-428b-a5cb-ef05946d9a37" />
 
 - Real-time messaging powered by Pusher
 - User-friendly Flutter UI for mobile devices
